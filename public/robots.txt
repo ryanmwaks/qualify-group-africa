@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block crawlers from legal boilerplate pages
+Disallow: /privacy
+Disallow: /terms
+Disallow: /cookies
+Disallow: /accessibility
+
+Sitemap: https://qualify.co.ke/sitemap.xml
