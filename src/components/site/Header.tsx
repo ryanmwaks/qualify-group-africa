@@ -50,7 +50,7 @@ export function Header() {
 
   // text colour: grey on transparent header (visible on white pages), white once scrolled
   const navText = scrolled ? "text-white/80" : "text-gray-400";
-  const navHover = "hover:text-white hover:bg-[var(--color-ocean)]/30 hover:shadow-[0_0_12px_rgba(0,95,135,0.5)]";
+  const navHover = "hover:text-[var(--color-ocean)] hover:[text-shadow:0_0_10px_rgba(0,95,135,0.9),0_0_20px_rgba(0,95,135,0.5)]";
 
   return (
     <>
@@ -157,14 +157,14 @@ export function Header() {
 }
 
 function NavLink({ to, exact, scrolled, children }: { to: string; exact?: boolean; scrolled: boolean; children: React.ReactNode }) {
-  const base = `px-3 py-2 text-sm font-medium rounded-md hover:bg-[var(--color-ocean)]/30 hover:text-white hover:shadow-[0_0_12px_rgba(0,95,135,0.5)] transition-all`;
+  const base = `px-3 py-2 text-sm font-medium rounded-md hover:text-[var(--color-ocean)] hover:[text-shadow:0_0_10px_rgba(0,95,135,0.9),0_0_20px_rgba(0,95,135,0.5)] transition-all`;
   const color = scrolled ? "text-white/80" : "text-gray-400";
   return (
     <Link
       to={to}
       activeOptions={{ exact: !!exact }}
       className={`${base} ${color}`}
-      activeProps={{ className: `${base} text-white font-semibold bg-[var(--color-ocean)]/40 shadow-[0_0_14px_rgba(0,95,135,0.6)]` }}
+      activeProps={{ className: `${base} text-[var(--color-ocean)] font-semibold [text-shadow:0_0_10px_rgba(0,95,135,0.9),0_0_20px_rgba(0,95,135,0.5)]` }}
     >
       {children}
     </Link>
@@ -178,7 +178,7 @@ function Dropdown({ label, open, onEnter, onLeave, items, scrolled }: {
   const color = scrolled ? "text-white/80" : "text-gray-400";
   return (
     <div className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-      <button className={`px-3 py-2 text-sm font-medium rounded-md hover:bg-[var(--color-ocean)]/30 hover:text-white hover:shadow-[0_0_12px_rgba(0,95,135,0.5)] inline-flex items-center gap-1 transition-all ${color}`}>
+      <button className={`px-3 py-2 text-sm font-medium rounded-md hover:text-[var(--color-ocean)] hover:[text-shadow:0_0_10px_rgba(0,95,135,0.9),0_0_20px_rgba(0,95,135,0.5)] inline-flex items-center gap-1 transition-all ${color}`}>
         {label} <ChevronDown className="size-3.5" />
       </button>
       {open && (
