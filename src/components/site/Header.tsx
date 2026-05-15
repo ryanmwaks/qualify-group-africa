@@ -62,12 +62,12 @@ export function Header() {
       }`}
       style={{ background: scrolled ? "rgba(8, 8, 14, 0.88)" : "transparent" }}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-4">
+      <div className="container-page flex h-16 overflow-visible items-center justify-between gap-4">
         <Link to="/" className="flex items-center group shrink-0">
           <img
             src={qualifyLogo}
             alt="Qualify Group Africa Ltd"
-            className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+            className="h-20 md:h-24 w-auto object-contain transition-transform group-hover:scale-105"
           />
         </Link>
 
