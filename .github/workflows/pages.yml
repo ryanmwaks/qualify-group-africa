@@ -33,8 +33,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Add SPA 404 fallback
-        run: cp dist/index.html dist/404.html
+      - name: Map /index to homepage
+        run: mkdir -p dist/index && cp dist/index.html dist/index/index.html
 
       - name: Add .nojekyll
         run: touch dist/.nojekyll

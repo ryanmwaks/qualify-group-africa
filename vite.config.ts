@@ -13,4 +13,17 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   server: { port: 8080 },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          router: ["@tanstack/react-router", "@tanstack/react-query"],
+          ui: ["lucide-react", "clsx", "tailwind-merge"],
+          forms: ["react-hook-form", "@hookform/resolvers", "zod"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
 });
