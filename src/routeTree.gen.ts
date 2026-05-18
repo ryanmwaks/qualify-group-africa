@@ -14,6 +14,7 @@ import { Route as StandardsRouteImport } from './routes/standards'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as QualityPolicyRouteImport } from './routes/quality-policy'
+import { Route as QmsSolutionsRouteImport } from './routes/qms-solutions'
 import { Route as QmsPlugRouteImport } from './routes/qms-plug'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PartnersRouteImport } from './routes/partners'
@@ -50,6 +51,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const QualityPolicyRoute = QualityPolicyRouteImport.update({
   id: '/quality-policy',
   path: '/quality-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QmsSolutionsRoute = QmsSolutionsRouteImport.update({
+  id: '/qms-solutions',
+  path: '/qms-solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QmsPlugRoute = QmsPlugRouteImport.update({
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/qms-plug': typeof QmsPlugRoute
+  '/qms-solutions': typeof QmsSolutionsRoute
   '/quality-policy': typeof QualityPolicyRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
@@ -145,6 +152,7 @@ export interface FileRoutesByTo {
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/qms-plug': typeof QmsPlugRoute
+  '/qms-solutions': typeof QmsSolutionsRoute
   '/quality-policy': typeof QualityPolicyRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/qms-plug': typeof QmsPlugRoute
+  '/qms-solutions': typeof QmsSolutionsRoute
   '/quality-policy': typeof QualityPolicyRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
@@ -186,6 +195,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacy'
     | '/qms-plug'
+    | '/qms-solutions'
     | '/quality-policy'
     | '/resources'
     | '/services'
@@ -205,6 +215,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacy'
     | '/qms-plug'
+    | '/qms-solutions'
     | '/quality-policy'
     | '/resources'
     | '/services'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacy'
     | '/qms-plug'
+    | '/qms-solutions'
     | '/quality-policy'
     | '/resources'
     | '/services'
@@ -244,6 +256,7 @@ export interface RootRouteChildren {
   PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
   QmsPlugRoute: typeof QmsPlugRoute
+  QmsSolutionsRoute: typeof QmsSolutionsRoute
   QualityPolicyRoute: typeof QualityPolicyRoute
   ResourcesRoute: typeof ResourcesRoute
   ServicesRoute: typeof ServicesRoute
@@ -286,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/quality-policy'
       fullPath: '/quality-policy'
       preLoaderRoute: typeof QualityPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qms-solutions': {
+      id: '/qms-solutions'
+      path: '/qms-solutions'
+      fullPath: '/qms-solutions'
+      preLoaderRoute: typeof QmsSolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/qms-plug': {
@@ -388,6 +408,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
   QmsPlugRoute: QmsPlugRoute,
+  QmsSolutionsRoute: QmsSolutionsRoute,
   QualityPolicyRoute: QualityPolicyRoute,
   ResourcesRoute: ResourcesRoute,
   ServicesRoute: ServicesRoute,

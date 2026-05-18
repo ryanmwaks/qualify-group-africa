@@ -14,7 +14,14 @@ const servicesMenu = [
   ["Quality Assurance and Compliance", "/services"],
   ["Training and Consultancy", "/services"],
   ["Technical Reporting and Documentation", "/services"],
-  ["QMS Platform", "/qms-plug"],
+] as const;
+
+const qmsSolutionsMenu = [
+  ["Platform Overview", "/qms-solutions"],
+  ["SaaS Platform", "/qms-solutions"],
+  ["Enterprise Solutions", "/qms-solutions"],
+  ["Modules", "/qms-solutions"],
+  ["Book a Demo", "/qms-solutions"],
 ] as const;
 
 const aboutMenu = [
@@ -24,12 +31,13 @@ const aboutMenu = [
   ["Partners", "/partners"],
   ["Standards We Align With", "/standards"],
   ["Complaints and Appeals", "/complaints-appeals"],
+  ["QMS Solutions", "/qms-solutions"],
 ] as const;
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [openMenu, setOpenMenu] = useState<null | "about" | "services">(null);
+  const [openMenu, setOpenMenu] = useState<null | "about" | "services" | "qmsSolutions">(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -39,7 +47,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const enter = (m: "about" | "services") => {
+  const enter = (m: "about" | "services" | "qmsSolutions") => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(m);
   };
@@ -75,7 +83,7 @@ export function Header() {
           <Dropdown label="About" open={openMenu === "about"} onEnter={() => enter("about")} onLeave={leave} items={aboutMenu} scrolled={scrolled} />
           <Dropdown label="Services" open={openMenu === "services"} onEnter={() => enter("services")} onLeave={leave} items={servicesMenu} scrolled={scrolled} />
           <NavLink to="/industries" scrolled={scrolled}>Industries</NavLink>
-          <NavLink to="/qms-plug" scrolled={scrolled}>QMS Platform</NavLink>
+          <Dropdown label="QMS Solutions" open={openMenu === "qmsSolutions"} onEnter={() => enter("qmsSolutions")} onLeave={leave} items={qmsSolutionsMenu} scrolled={scrolled} />
           <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
             className={`px-3 py-2 text-sm font-medium rounded-md ${navHover} inline-flex items-center gap-1 transition-colors ${navText}`}>
             Training <ArrowUpRight className="size-3.5" />
@@ -109,7 +117,7 @@ export function Header() {
             <MobileGroup label="About" items={aboutMenu} onClose={() => setOpen(false)} />
             <MobileGroup label="Services" items={servicesMenu} onClose={() => setOpen(false)} />
             <MobileLink to="/industries" onClose={() => setOpen(false)}>Industries</MobileLink>
-            <MobileLink to="/qms-plug" onClose={() => setOpen(false)}>QMS Platform</MobileLink>
+            <MobileGroup label="QMS Solutions" items={qmsSolutionsMenu} onClose={() => setOpen(false)} />
             <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
               className="px-3 py-3 text-sm font-medium rounded-md hover:bg-white/10 text-white/85 hover:text-white inline-flex items-center gap-1">
               Training <ArrowUpRight className="size-3.5" />
