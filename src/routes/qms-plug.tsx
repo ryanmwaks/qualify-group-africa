@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { FileText, ClipboardCheck, AlertTriangle, GitBranch, ShieldCheck, BarChart3, Users, GraduationCap, TrendingUp, ArrowRight, CheckCircle2, Zap, Globe, Cpu } from "lucide-react";
+import { FileText, ClipboardCheck, AlertTriangle, GitBranch, ShieldCheck, BarChart3, Users, GraduationCap, TrendingUp, ArrowRight, CheckCircle2, Zap, Globe, Cpu, Award, BookOpen, BadgeCheck, ExternalLink } from "lucide-react";
 import qmsImg from "@/assets/qms-mockup.jpg";
 import inspectorImg from "@/assets/inspector.jpg";
 
@@ -203,6 +203,71 @@ function QMSPage() {
                   Speak to Us
                 </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certification Portal */}
+      <section className="py-20" style={{ background: "var(--gradient-accent)" }}>
+        <div className="container-page">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-white space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-[0.15em] uppercase text-white/80">
+                <Award className="size-3.5" /> Certification Portal
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight">
+                Manage Your Certifications in One Place
+              </h2>
+              <p className="text-white/70 leading-relaxed text-lg">
+                Access and manage your ISO certification journey through the QUALIFY Certification Portal — track readiness, submit documentation, monitor audit schedules and receive your certification status updates in real time.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  ["Certification readiness tracking against ISO clauses", BadgeCheck],
+                  ["Document submission and review workflows", FileText],
+                  ["Audit scheduling and outcome recording", ClipboardCheck],
+                  ["Real-time certification status dashboard", BarChart3],
+                  ["Multi-standard support: ISO 9001, 14001, 45001, 22000", BookOpen],
+                ].map(([text, Icon]) => (
+                  <li key={text as string} className="flex items-start gap-3 text-sm">
+                    <Icon className="size-4 text-white/60 shrink-0 mt-0.5" />
+                    <span className="text-white/75">{text as string}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a
+                  href="https://quality.qualify.co.ke"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-white text-navy px-7 py-3.5 font-semibold hover:bg-white/90 transition-opacity"
+                >
+                  Access Certification Portal <ExternalLink className="size-4" />
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-lg bg-white/10 border border-white/25 text-white px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors"
+                >
+                  Request Access
+                </Link>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { icon: BadgeCheck, label: "ISO 9001", desc: "Quality Management", color: "var(--color-teal)" },
+                { icon: ShieldCheck, label: "ISO 14001", desc: "Environmental Management", color: "var(--color-ocean)" },
+                { icon: Users, label: "ISO 45001", desc: "Health & Safety", color: "var(--color-orange)" },
+                { icon: Globe, label: "ISO 22000", desc: "Food Safety", color: "var(--color-teal)" },
+              ].map((c) => (
+                <div key={c.label} className="glass-card-dark rounded-2xl p-5 border border-white/10 hover:border-white/25 transition-all">
+                  <div className="size-10 rounded-lg grid place-items-center mb-3" style={{ background: `${c.color}30` }}>
+                    <c.icon className="size-5" style={{ color: c.color }} />
+                  </div>
+                  <div className="font-display font-bold text-white text-lg">{c.label}</div>
+                  <div className="text-xs text-white/50 mt-1">{c.desc}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

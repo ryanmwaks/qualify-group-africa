@@ -12,7 +12,6 @@ const servicesMenu = [
   ["Vessel Condition Surveys", "/services"],
   ["Damage and Loss Assessment", "/services"],
   ["Quality Assurance and Compliance", "/services"],
-  ["Certification Support", "/certification-portal"],
   ["Training and Consultancy", "/services"],
   ["Technical Reporting and Documentation", "/services"],
   ["QMS Platform", "/qms-plug"],
@@ -81,10 +80,6 @@ export function Header() {
             className={`px-3 py-2 text-sm font-medium rounded-md ${navHover} inline-flex items-center gap-1 transition-colors ${navText}`}>
             Training <ArrowUpRight className="size-3.5" />
           </a>
-          <a href={CERT_URL} target="_blank" rel="noopener noreferrer"
-            className={`px-3 py-2 text-sm font-medium rounded-md ${navHover} inline-flex items-center gap-1 transition-colors ${navText}`}>
-            Certification Portal <ArrowUpRight className="size-3.5" />
-          </a>
           <NavLink to="/resources" scrolled={scrolled}>Resources</NavLink>
           <NavLink to="/contact" scrolled={scrolled}>Contact</NavLink>
         </nav>
@@ -118,10 +113,6 @@ export function Header() {
             <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
               className="px-3 py-3 text-sm font-medium rounded-md hover:bg-white/10 text-white/85 hover:text-white inline-flex items-center gap-1">
               Training <ArrowUpRight className="size-3.5" />
-            </a>
-            <a href={CERT_URL} target="_blank" rel="noopener noreferrer"
-              className="px-3 py-3 text-sm font-medium rounded-md hover:bg-white/10 text-white/85 hover:text-white inline-flex items-center gap-1">
-              Certification Portal <ArrowUpRight className="size-3.5" />
             </a>
             <MobileLink to="/resources" onClose={() => setOpen(false)}>Resources</MobileLink>
             <MobileLink to="/contact" onClose={() => setOpen(false)}>Contact</MobileLink>
