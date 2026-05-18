@@ -13,7 +13,7 @@ export const Route = createFileRoute("/privacy")({
       <h2>Confidentiality</h2>
       <p>Client assignment details are handled confidentially and shared only with personnel involved in service delivery.</p>
       <h2>Your rights</h2>
-      <p>You may request access, correction or deletion of your personal data by contacting info@qualifygroup.africa.</p>
+      <p>You may request access, correction or deletion of your personal data by contacting info@qualify.co.ke.</p>
     </LegalPage>
   ),
 });

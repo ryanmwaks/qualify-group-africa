@@ -97,7 +97,7 @@ export function Footer() {
           <div className="space-y-4">
             <ContactRow icon={MapPin} label="Office">Mombasa, Kenya</ContactRow>
             <ContactRow icon={Phone} label="Phone" href="tel:+254723237939">+254 723 237 939</ContactRow>
-            <ContactRow icon={Mail} label="Email" href="mailto:info@qualifygroup.africa">info@qualifygroup.africa</ContactRow>
+            <ContactRow icon={Mail} label="Email" href="mailto:info@qualify.co.ke">info@qualify.co.ke</ContactRow>
             <ContactRow icon={Clock} label="Hours">Mon–Fri · 8:00 AM – 5:00 PM EAT</ContactRow>
           </div>
           <div className="mt-5 flex flex-col gap-2">

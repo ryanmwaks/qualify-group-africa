@@ -14,7 +14,7 @@ export const Route = createFileRoute("/accessibility")({
         <li>Mobile-friendly responsive layouts</li>
       </ul>
       <h2>Feedback</h2>
-      <p>If you experience accessibility issues, contact info@qualifygroup.africa and we will address them promptly.</p>
+      <p>If you experience accessibility issues, contact info@qualify.co.ke and we will address them promptly.</p>
     </LegalPage>
   ),
 });

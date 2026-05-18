@@ -32,7 +32,7 @@ function Contact() {
         {[
           { icon: MapPin, label: "Office", text: "Mombasa, Kenya" },
           { icon: Phone, label: "Phone", text: "+254 723 237 939" },
-          { icon: Mail, label: "Email", text: "info@qualifygroup.africa" },
+          { icon: Mail, label: "Email", text: "info@qualify.co.ke" },
           { icon: Clock, label: "Hours", text: "Mon–Fri, 8AM–5PM" },
         ].map((c) => (
           <div key={c.label} className="rounded-xl bg-card border border-border p-5 flex gap-3">
