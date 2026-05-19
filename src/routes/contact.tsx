@@ -47,7 +47,7 @@ function Contact() {
 
       <section className="container-page pb-16 grid lg:grid-cols-5 gap-8">
         <div className="lg:col-span-3 rounded-2xl bg-card border border-border p-6 md:p-8 shadow-[var(--shadow-card)]">
-          <h2 className="font-display text-2xl font-bold text-navy mb-1">Request a Survey</h2>
+          <h2 className="font-display text-2xl font-bold text-navy mb-1">Request a Service</h2>
           <p className="text-sm text-muted-foreground mb-6">We typically respond within one business day.</p>
           {submitted ? (
             <div className="rounded-xl bg-[var(--color-success)]/10 border border-[var(--color-success)]/30 p-6 text-center">

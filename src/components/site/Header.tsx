@@ -99,7 +99,7 @@ export function Header() {
             <Phone className="size-4" />
           </a>
           <Link to="/contact" className="hidden sm:inline-flex items-center justify-center rounded-md bg-[var(--color-orange)] text-white px-4 py-2.5 text-sm font-semibold hover:opacity-90 shadow-md hover:shadow-lg transition-all">
-            Request a Survey
+            Request a Service
           </Link>
           <button
             className={`lg:hidden grid place-items-center size-10 rounded-md border border-white/20 ${scrolled ? "text-white" : "text-gray-400"}`}
@@ -126,7 +126,7 @@ export function Header() {
             <MobileLink to="/contact" onClose={() => setOpen(false)}>Contact</MobileLink>
             <Link to="/contact" onClick={() => setOpen(false)}
               className="mt-3 inline-flex items-center justify-center rounded-md bg-[var(--color-orange)] text-white px-4 py-3.5 text-sm font-semibold">
-              Request a Survey
+              Request a Service
             </Link>
           </div>
         </div>
@@ -147,7 +147,7 @@ export function Header() {
           to="/contact"
           className="whitespace-nowrap rounded-full bg-[var(--color-orange)] text-white px-5 py-2.5 text-xs font-semibold shadow-[0_4px_24px_rgba(228,87,46,0.5)] hover:opacity-90 transition-all active:scale-95"
         >
-          Request Survey
+          Request Service
         </Link>
       </div>
     )}
