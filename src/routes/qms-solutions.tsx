@@ -685,7 +685,7 @@ function QMSSolutions() {
         <div className="container-page">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)] mb-4">
-              12 Core Platform Modules
+              Core Platform Modules
             </h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               Each module is purpose-built and works seamlessly within the wider
@@ -789,7 +789,7 @@ function QMSSolutions() {
         <div className="container-page">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Designed for Your Industry
+              Designed for any Industry
             </h2>
             <p className="text-white/60 max-w-2xl mx-auto">
               QUALIFY QMS is configured for sector-specific compliance requirements
@@ -798,85 +798,33 @@ function QMSSolutions() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              {
-                icon: Ship,
-                name: "Maritime & Shipping",
-                challenges: ["ISM Code compliance", "Port State Control audits"],
-                tag: "ISO 9001 · ISM · MLC",
-              },
-              {
-                icon: Truck,
-                name: "Logistics & Supply Chain",
-                challenges: ["Multi-site compliance", "Supplier qualification"],
-                tag: "ISO 9001 · ISO 45001",
-              },
-              {
-                icon: Factory,
-                name: "Manufacturing",
-                challenges: ["Production QC traceability", "CAPA management"],
-                tag: "ISO 9001 · ISO 14001",
-              },
-              {
-                icon: Flame,
-                name: "Oil & Gas",
-                challenges: ["HSE regulatory compliance", "Permit-to-work systems"],
-                tag: "ISO 45001 · ISO 14001",
-              },
-              {
-                icon: HeartPulse,
-                name: "Healthcare",
-                challenges: ["Patient safety records", "Regulatory submissions"],
-                tag: "ISO 9001 · ISO 45001",
-              },
-              {
-                icon: FlaskConical,
-                name: "Laboratories",
-                challenges: ["Calibration management", "Test method validation"],
-                tag: "ISO/IEC 17025",
-              },
-              {
-                icon: Landmark,
-                name: "Government Institutions",
-                challenges: ["Policy compliance tracking", "Audit trail requirements"],
-                tag: "ISO 9001 · Governance",
-              },
-              {
-                icon: Search,
-                name: "Inspection Bodies",
-                challenges: ["Inspector competence records", "Impartiality management"],
-                tag: "ISO/IEC 17020",
-              },
-              {
-                icon: Building2,
-                name: "SMEs",
-                challenges: ["Resource-light compliance", "Certification readiness"],
-                tag: "ISO 9001 · CAPA",
-              },
-            ].map(({ icon: Icon, name, challenges, tag }) => (
-              <div
+              { icon: Ship,        name: "Maritime & Shipping",      tag: "ISO 9001 · MLC · ISPS · ISM · SOLAS · MARPOL", to: "/industry/maritime" },
+              { icon: Truck,       name: "Logistics & Supply Chain", tag: "ISO 9001 · ISO 45001",                         to: "/industry/logistics" },
+              { icon: Factory,     name: "Manufacturing",            tag: "ISO 9001 · ISO 14001",                         to: "/industry/manufacturing" },
+              { icon: Flame,       name: "Oil & Gas",                tag: "ISO 45001 · ISO 14001",                        to: "/industry/oil-gas" },
+              { icon: HeartPulse, name: "Healthcare",               tag: "ISO 9001 · ISO 45001",                         to: "/industry/healthcare" },
+              { icon: FlaskConical, name: "Laboratories",           tag: "ISO/IEC 17025",                                to: "/industry/laboratories" },
+              { icon: Landmark,    name: "Government Institutions",  tag: "ISO 9001 · Governance",                        to: "/industry/government" },
+              { icon: Search,      name: "Inspection Bodies",        tag: "ISO/IEC 17020",                                to: "/industry/inspection" },
+              { icon: Building2,   name: "SMEs",                     tag: "ISO 9001 · CAPA",                              to: "/industry/sme" },
+            ].map(({ icon: Icon, name, tag, to }) => (
+              <Link
                 key={name}
-                className="rounded-xl border border-white/10 bg-white/5 p-6 hover:border-[var(--color-teal)]/50 hover:bg-white/8 transition-all"
+                to={to}
+                className="rounded-xl border border-white/10 bg-white/5 p-6 hover:border-[var(--color-teal)]/50 hover:bg-white/8 transition-all flex flex-col gap-4 group"
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="size-10 rounded-lg bg-[var(--color-teal)]/15 flex items-center justify-center shrink-0">
+                <div className="flex items-center gap-4">
+                  <div className="size-10 rounded-lg bg-[var(--color-teal)]/15 flex items-center justify-center shrink-0 group-hover:bg-[var(--color-teal)]/25 transition-colors">
                     <Icon className="size-5 text-[var(--color-teal)]" />
                   </div>
-                  <h3 className="font-semibold text-white text-sm leading-snug pt-1">
+                  <h3 className="font-semibold text-white text-sm leading-snug">
                     {name}
                   </h3>
                 </div>
-                <ul className="space-y-1.5 mb-4">
-                  {challenges.map((c) => (
-                    <li key={c} className="text-xs text-white/60 flex items-start gap-2">
-                      <span className="text-[var(--color-orange)] mt-0.5">·</span>
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-                <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[var(--color-ocean)]/20 text-[var(--color-teal)] border border-[var(--color-teal)]/20">
+                <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[var(--color-ocean)]/20 text-[var(--color-teal)] border border-[var(--color-teal)]/20 self-start">
                   {tag}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

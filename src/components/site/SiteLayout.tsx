@@ -30,12 +30,13 @@ const variantImages: Record<PageHeroVariant, string> = {
 };
 
 export function PageHero({
-  eyebrow, title, subtitle, variant = "port",
+  eyebrow, title, subtitle, variant = "port", icon,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   variant?: PageHeroVariant;
+  icon?: ReactNode;
 }) {
   const bgImg = variantImages[variant];
   return (
@@ -55,6 +56,11 @@ export function PageHero({
       {/* Teal glow top-right */}
       <div className="absolute -top-16 right-0 size-80 rounded-full bg-[var(--color-teal)]/10 blur-3xl pointer-events-none" />
       <div className="container-page relative py-20 md:py-28 w-full">
+        {icon && (
+          <div className="size-14 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-5 backdrop-blur-sm">
+            {icon}
+          </div>
+        )}
         {eyebrow && (
           <div className="inline-block text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-semibold mb-4 px-3 py-1.5 rounded-full bg-white/8 border border-white/10 backdrop-blur-sm">
             {eyebrow}

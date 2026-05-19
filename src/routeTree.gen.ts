@@ -27,6 +27,15 @@ import { Route as CertificationPortalRouteImport } from './routes/certification-
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as IndustrySmeRouteImport } from './routes/industry/sme'
+import { Route as IndustryOilGasRouteImport } from './routes/industry/oil-gas'
+import { Route as IndustryMaritimeRouteImport } from './routes/industry/maritime'
+import { Route as IndustryManufacturingRouteImport } from './routes/industry/manufacturing'
+import { Route as IndustryLogisticsRouteImport } from './routes/industry/logistics'
+import { Route as IndustryLaboratoriesRouteImport } from './routes/industry/laboratories'
+import { Route as IndustryInspectionRouteImport } from './routes/industry/inspection'
+import { Route as IndustryHealthcareRouteImport } from './routes/industry/healthcare'
+import { Route as IndustryGovernmentRouteImport } from './routes/industry/government'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -118,6 +127,51 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndustrySmeRoute = IndustrySmeRouteImport.update({
+  id: '/industry/sme',
+  path: '/industry/sme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryOilGasRoute = IndustryOilGasRouteImport.update({
+  id: '/industry/oil-gas',
+  path: '/industry/oil-gas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryMaritimeRoute = IndustryMaritimeRouteImport.update({
+  id: '/industry/maritime',
+  path: '/industry/maritime',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryManufacturingRoute = IndustryManufacturingRouteImport.update({
+  id: '/industry/manufacturing',
+  path: '/industry/manufacturing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryLogisticsRoute = IndustryLogisticsRouteImport.update({
+  id: '/industry/logistics',
+  path: '/industry/logistics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryLaboratoriesRoute = IndustryLaboratoriesRouteImport.update({
+  id: '/industry/laboratories',
+  path: '/industry/laboratories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryInspectionRoute = IndustryInspectionRouteImport.update({
+  id: '/industry/inspection',
+  path: '/industry/inspection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryHealthcareRoute = IndustryHealthcareRouteImport.update({
+  id: '/industry/healthcare',
+  path: '/industry/healthcare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustryGovernmentRoute = IndustryGovernmentRouteImport.update({
+  id: '/industry/government',
+  path: '/industry/government',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -138,6 +192,15 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/industry/government': typeof IndustryGovernmentRoute
+  '/industry/healthcare': typeof IndustryHealthcareRoute
+  '/industry/inspection': typeof IndustryInspectionRoute
+  '/industry/laboratories': typeof IndustryLaboratoriesRoute
+  '/industry/logistics': typeof IndustryLogisticsRoute
+  '/industry/manufacturing': typeof IndustryManufacturingRoute
+  '/industry/maritime': typeof IndustryMaritimeRoute
+  '/industry/oil-gas': typeof IndustryOilGasRoute
+  '/industry/sme': typeof IndustrySmeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -158,6 +221,15 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/industry/government': typeof IndustryGovernmentRoute
+  '/industry/healthcare': typeof IndustryHealthcareRoute
+  '/industry/inspection': typeof IndustryInspectionRoute
+  '/industry/laboratories': typeof IndustryLaboratoriesRoute
+  '/industry/logistics': typeof IndustryLogisticsRoute
+  '/industry/manufacturing': typeof IndustryManufacturingRoute
+  '/industry/maritime': typeof IndustryMaritimeRoute
+  '/industry/oil-gas': typeof IndustryOilGasRoute
+  '/industry/sme': typeof IndustrySmeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -179,6 +251,15 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/industry/government': typeof IndustryGovernmentRoute
+  '/industry/healthcare': typeof IndustryHealthcareRoute
+  '/industry/inspection': typeof IndustryInspectionRoute
+  '/industry/laboratories': typeof IndustryLaboratoriesRoute
+  '/industry/logistics': typeof IndustryLogisticsRoute
+  '/industry/manufacturing': typeof IndustryManufacturingRoute
+  '/industry/maritime': typeof IndustryMaritimeRoute
+  '/industry/oil-gas': typeof IndustryOilGasRoute
+  '/industry/sme': typeof IndustrySmeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -201,6 +282,15 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/industry/government'
+    | '/industry/healthcare'
+    | '/industry/inspection'
+    | '/industry/laboratories'
+    | '/industry/logistics'
+    | '/industry/manufacturing'
+    | '/industry/maritime'
+    | '/industry/oil-gas'
+    | '/industry/sme'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -221,6 +311,15 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/industry/government'
+    | '/industry/healthcare'
+    | '/industry/inspection'
+    | '/industry/laboratories'
+    | '/industry/logistics'
+    | '/industry/manufacturing'
+    | '/industry/maritime'
+    | '/industry/oil-gas'
+    | '/industry/sme'
   id:
     | '__root__'
     | '/'
@@ -241,6 +340,15 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/industry/government'
+    | '/industry/healthcare'
+    | '/industry/inspection'
+    | '/industry/laboratories'
+    | '/industry/logistics'
+    | '/industry/manufacturing'
+    | '/industry/maritime'
+    | '/industry/oil-gas'
+    | '/industry/sme'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -262,6 +370,15 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   StandardsRoute: typeof StandardsRoute
   TermsRoute: typeof TermsRoute
+  IndustryGovernmentRoute: typeof IndustryGovernmentRoute
+  IndustryHealthcareRoute: typeof IndustryHealthcareRoute
+  IndustryInspectionRoute: typeof IndustryInspectionRoute
+  IndustryLaboratoriesRoute: typeof IndustryLaboratoriesRoute
+  IndustryLogisticsRoute: typeof IndustryLogisticsRoute
+  IndustryManufacturingRoute: typeof IndustryManufacturingRoute
+  IndustryMaritimeRoute: typeof IndustryMaritimeRoute
+  IndustryOilGasRoute: typeof IndustryOilGasRoute
+  IndustrySmeRoute: typeof IndustrySmeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -392,6 +509,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/industry/sme': {
+      id: '/industry/sme'
+      path: '/industry/sme'
+      fullPath: '/industry/sme'
+      preLoaderRoute: typeof IndustrySmeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/oil-gas': {
+      id: '/industry/oil-gas'
+      path: '/industry/oil-gas'
+      fullPath: '/industry/oil-gas'
+      preLoaderRoute: typeof IndustryOilGasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/maritime': {
+      id: '/industry/maritime'
+      path: '/industry/maritime'
+      fullPath: '/industry/maritime'
+      preLoaderRoute: typeof IndustryMaritimeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/manufacturing': {
+      id: '/industry/manufacturing'
+      path: '/industry/manufacturing'
+      fullPath: '/industry/manufacturing'
+      preLoaderRoute: typeof IndustryManufacturingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/logistics': {
+      id: '/industry/logistics'
+      path: '/industry/logistics'
+      fullPath: '/industry/logistics'
+      preLoaderRoute: typeof IndustryLogisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/laboratories': {
+      id: '/industry/laboratories'
+      path: '/industry/laboratories'
+      fullPath: '/industry/laboratories'
+      preLoaderRoute: typeof IndustryLaboratoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/inspection': {
+      id: '/industry/inspection'
+      path: '/industry/inspection'
+      fullPath: '/industry/inspection'
+      preLoaderRoute: typeof IndustryInspectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/healthcare': {
+      id: '/industry/healthcare'
+      path: '/industry/healthcare'
+      fullPath: '/industry/healthcare'
+      preLoaderRoute: typeof IndustryHealthcareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry/government': {
+      id: '/industry/government'
+      path: '/industry/government'
+      fullPath: '/industry/government'
+      preLoaderRoute: typeof IndustryGovernmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -414,6 +594,15 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   StandardsRoute: StandardsRoute,
   TermsRoute: TermsRoute,
+  IndustryGovernmentRoute: IndustryGovernmentRoute,
+  IndustryHealthcareRoute: IndustryHealthcareRoute,
+  IndustryInspectionRoute: IndustryInspectionRoute,
+  IndustryLaboratoriesRoute: IndustryLaboratoriesRoute,
+  IndustryLogisticsRoute: IndustryLogisticsRoute,
+  IndustryManufacturingRoute: IndustryManufacturingRoute,
+  IndustryMaritimeRoute: IndustryMaritimeRoute,
+  IndustryOilGasRoute: IndustryOilGasRoute,
+  IndustrySmeRoute: IndustrySmeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
