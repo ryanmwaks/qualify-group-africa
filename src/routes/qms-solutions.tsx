@@ -397,7 +397,7 @@ function QMSSolutions() {
                   to="/contact"
                   className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white font-bold px-6 py-3.5 text-sm hover:opacity-90 transition-all shadow-lg hover:shadow-[0_8px_30px_rgba(224,90,43,0.4)]"
                 >
-                  Start Subscription <ArrowRight className="size-4" />
+                  Contact Us <ArrowRight className="size-4" />
                 </Link>
                 <a
                   href="#book-demo"
@@ -499,7 +499,7 @@ function QMSSolutions() {
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-ocean)] text-white font-semibold px-5 py-3 text-sm hover:opacity-90 transition-all"
               >
-                Start Subscription <ArrowRight className="size-4" />
+                Contact Us <ArrowRight className="size-4" />
               </Link>
             </div>
 
@@ -543,7 +543,7 @@ function QMSSolutions() {
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white font-bold px-5 py-3 text-sm hover:opacity-90 transition-all"
               >
-                Request a Custom Solution <ArrowRight className="size-4" />
+                Contact Us <ArrowRight className="size-4" />
               </Link>
             </div>
           </div>
@@ -583,7 +583,7 @@ function QMSSolutions() {
                   "CAPA tracking",
                   "Email support",
                 ],
-                cta: "Get Started",
+                cta: "Contact Us",
                 highlight: false,
               },
               {
@@ -599,7 +599,7 @@ function QMSSolutions() {
                   "Analytics dashboards",
                   "Priority support",
                 ],
-                cta: "Start Free Trial",
+                cta: "Contact Us",
                 highlight: true,
               },
               {
@@ -614,7 +614,7 @@ function QMSSolutions() {
                   "SLA guarantee",
                   "Dedicated support",
                 ],
-                cta: "Contact Sales",
+                cta: "Contact Us",
                 highlight: false,
               },
               {
@@ -629,7 +629,7 @@ function QMSSolutions() {
                   "Dedicated build team",
                   "Custom SLA",
                 ],
-                cta: "Request Proposal",
+                cta: "Contact Us",
                 highlight: false,
               },
             ].map((plan) => (
@@ -726,7 +726,7 @@ function QMSSolutions() {
               },
               {
                 icon: GraduationCap,
-                name: "Training Records",
+                name: "Training Management",
                 desc: "Competence tracking, training schedules, and qualification records.",
               },
               {
@@ -753,6 +753,11 @@ function QMSSolutions() {
                 icon: Users,
                 name: "Management Reviews",
                 desc: "Structured management review meetings with action tracking.",
+              },
+              {
+                icon: FileText,
+                name: "Record Management",
+                desc: "Centralised storage, retrieval and retention of quality and compliance records with controlled access.",
               },
             ].map(({ icon: Icon, name, desc }) => (
               <div
@@ -1246,7 +1251,7 @@ function QMSSolutions() {
               to="/contact"
               className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white font-bold px-7 py-3.5 text-sm hover:opacity-90 transition-all shadow-lg hover:shadow-[0_8px_30px_rgba(224,90,43,0.4)]"
             >
-              Start Subscription <ArrowRight className="size-4" />
+              Contact Us <ArrowRight className="size-4" />
             </Link>
             <a
               href="#book-demo"
