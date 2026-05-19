@@ -7,7 +7,7 @@ export const getRouter = () => {
 
   const router = createRouter({
     routeTree,
-    basepath: "/qualify-group-africa",
+    basepath: import.meta.env.VITE_BASE?.replace(/\/$/, "") || "/",
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,

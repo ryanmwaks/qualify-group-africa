@@ -32,6 +32,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_BASE: /qualify-group-africa/
 
       - name: Map /index to homepage
         run: mkdir -p dist/index && cp dist/index.html dist/index/index.html
