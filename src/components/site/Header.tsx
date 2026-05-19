@@ -74,6 +74,9 @@ export function Header() {
           <img
             src={qualifyLogo}
             alt="Qualify Group Africa Ltd"
+            fetchPriority="high"
+            loading="eager"
+            decoding="sync"
             className="h-20 md:h-24 w-auto object-contain transition-transform group-hover:scale-105"
           />
         </Link>
