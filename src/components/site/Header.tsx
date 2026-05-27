@@ -91,10 +91,10 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-1">
           <NavLink to="/" exact scrolled={scrolled}>Home</NavLink>
           <Dropdown label="About" open={openMenu === "about"} onEnter={() => enter("about")} onLeave={leave} items={aboutMenu} scrolled={scrolled} />
+          <Dropdown label="QMS Solutions" open={openMenu === "qmsSolutions"} onEnter={() => enter("qmsSolutions")} onLeave={leave} items={qmsSolutionsMenu} scrolled={scrolled} />
           <Dropdown label="Services" open={openMenu === "services"} onEnter={() => enter("services")} onLeave={leave} items={servicesMenu} scrolled={scrolled} />
           <NavLink to="/industries" scrolled={scrolled}>Industries</NavLink>
           <Dropdown label="Certifications" open={openMenu === "certifications"} onEnter={() => enter("certifications")} onLeave={leave} items={certificationsMenu} scrolled={scrolled} />
-          <Dropdown label="QMS Solutions" open={openMenu === "qmsSolutions"} onEnter={() => enter("qmsSolutions")} onLeave={leave} items={qmsSolutionsMenu} scrolled={scrolled} />
           <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
             className={`px-3 py-2 text-sm font-medium rounded-md ${navHover} inline-flex items-center gap-1 transition-colors ${navText}`}>
             Training <ArrowUpRight className="size-3.5" />
@@ -126,10 +126,10 @@ export function Header() {
           <div className="container-page py-4 pb-8 flex flex-col gap-1">
             <MobileLink to="/" onClose={() => setOpen(false)}>Home</MobileLink>
             <MobileGroup label="About" items={aboutMenu} onClose={() => setOpen(false)} />
+            <MobileGroup label="QMS Solutions" items={qmsSolutionsMenu} onClose={() => setOpen(false)} />
             <MobileGroup label="Services" items={servicesMenu} onClose={() => setOpen(false)} />
             <MobileLink to="/industries" onClose={() => setOpen(false)}>Industries</MobileLink>
             <MobileGroup label="Certifications" items={certificationsMenu} onClose={() => setOpen(false)} />
-            <MobileGroup label="QMS Solutions" items={qmsSolutionsMenu} onClose={() => setOpen(false)} />
             <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
               className="px-3 py-3 text-sm font-medium rounded-md hover:bg-white/10 text-white/85 hover:text-white inline-flex items-center gap-1">
               Training <ArrowUpRight className="size-3.5" />
