@@ -7,14 +7,14 @@ const TRAINING_URL = "https://training.qualify.co.ke";
 const CERT_URL = "https://quality.qualify.co.ke";
 
 const servicesMenu = [
-  ["Marine Inspection & Surveying", "/services"],
-  ["Cargo Inspection & Surveying", "/services"],
-  ["Vessel Condition Surveys", "/services"],
-  ["Damage and Loss Assessment", "/services"],
-  ["Quality Assurance and Compliance", "/services"],
-  ["Certification Support", "/certification-portal"],
-  ["Training and Consultancy", TRAINING_URL],
-  ["Technical Reporting and Documentation", "/services"],
+  ["Our Services", "/services"],
+  ["Quality Assurance & Compliance", "/services/quality-assurance"],
+  ["Training & Consultancy", "/services/training-consultancy"],
+  ["Technical Reporting & Documentation", "/services/technical-reporting"],
+  ["Marine Inspection & Surveying", "/services/marine-inspection"],
+  ["Cargo Inspection & Surveying", "/services/cargo-inspection"],
+  ["Vessel Condition Surveys", "/services/vessel-surveys"],
+  ["Damage & Loss Assessment", "/services/damage-loss"],
   ["QMS Platform", "/qms-plug"],
 ] as const;
 
