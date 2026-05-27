@@ -1,180 +1,155 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SiteLayout } from "@/components/site/SiteLayout";
-import { CheckCircle2, ArrowRight, Search, FileText, GraduationCap, ClipboardCheck, AlertTriangle, ShieldCheck, RefreshCw, BadgeCheck } from "lucide-react";
+import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
+import { CheckCircle2, ArrowRight, Search, FileText, GraduationCap, ClipboardCheck, AlertTriangle, ShieldCheck, RefreshCw, FlaskConical } from "lucide-react";
 
 export const Route = createFileRoute("/certifications/iso-17025")({
   head: () => ({
     meta: [
-      { title: "ISO/IEC 17025 Accreditation Support — Testing & Calibration Labs | QUALIFY Group Africa" },
-      { name: "description", content: "QUALIFY supports testing and calibration laboratories in Kenya pursuing KENAS accreditation under ISO/IEC 17025 — gap assessments, method documentation, calibration management, internal audits and readiness reviews." },
+      { title: "ISO/IEC 17025 Accreditation Readiness | QUALIFY Group Africa" },
+      { name: "description", content: "QUALIFY supports testing and calibration laboratories preparing for ISO/IEC 17025 accreditation — gap assessments, quality system documentation, internal audits and pre-assessment readiness." },
     ],
   }),
   component: Iso17025Page,
 });
 
-const tabs = [
-  { label: "ISO/IEC 17020", to: "/certifications/iso-17020" },
-  { label: "ISO 15189",     to: "/certifications/iso-15189" },
-  { label: "ISO/IEC 17025", to: "/certifications/iso-17025" },
+const requirements = [
+  { clause: "Clause 4", title: "General Requirements", desc: "Impartiality, confidentiality and independence — structural obligations applying to all testing and calibration laboratory activities." },
+  { clause: "Clause 5", title: "Structural Requirements", desc: "Legal identity, management responsibility, organisational structure and defined roles throughout the laboratory." },
+  { clause: "Clause 6", title: "Resource Requirements", desc: "Personnel competence, equipment calibration, reference standards traceability, environmental conditions and externally provided products and services." },
+  { clause: "Clause 7", title: "Process Requirements", desc: "Method selection and validation, sampling, handling of test items, measurement uncertainty, reporting results and managing complaints." },
+  { clause: "Clause 8", title: "Management System", desc: "Option A (own MS requirements) or Option B (ISO 9001-compatible) — document control, internal audit, management review, corrective actions and continual improvement." },
 ];
 
 const journey = [
-  { n: 1, icon: Search,         title: "Gap Assessment",          desc: "Structured review of your laboratory against all ISO/IEC 17025:2017 clause requirements — both management and technical — with a detailed gap analysis report and prioritised action plan." },
-  { n: 2, icon: FileText,       title: "Documentation",           desc: "Quality manual, method documentation, uncertainty of measurement records, calibration procedures, sampling methods and associated record formats developed to meet standard requirements." },
-  { n: 3, icon: GraduationCap,  title: "Competence Development",  desc: "Personnel competence evaluation frameworks, training records, authorisation registers and ongoing competence monitoring aligned to ISO/IEC 17025 personnel requirements." },
-  { n: 4, icon: ClipboardCheck, title: "Internal Audit",          desc: "Full internal audit covering both management and technical clauses — including method validation, calibration traceability, equipment management and PT participation records." },
-  { n: 5, icon: AlertTriangle,  title: "Corrective Actions",      desc: "Root-cause analysis and structured CAPA management for all audit findings, with objective evidence of effective corrective actions through to verified closure." },
-  { n: 6, icon: ShieldCheck,    title: "Accreditation Readiness", desc: "Pre-assessment readiness review confirming your laboratory is genuinely ready — including scope of accreditation clarity — before KENAS conducts its formal assessment." },
-  { n: 7, icon: RefreshCw,      title: "Continual Improvement",   desc: "Post-accreditation support — surveillance readiness, scope extension support, annual internal audit planning, proficiency testing coordination and ongoing advisory." },
+  { n: 1, icon: Search,         title: "Gap Assessment",           desc: "Clause-by-clause assessment of your laboratory's current quality system against ISO/IEC 17025 — producing a structured gap report, readiness score and prioritised roadmap." },
+  { n: 2, icon: FileText,       title: "Quality Documentation",    desc: "Quality manual, standard operating procedures, method validation records, uncertainty budgets and laboratory forms developed or improved to meet 17025 requirements." },
+  { n: 3, icon: GraduationCap,  title: "Competence & Training",    desc: "Personnel competence frameworks, training records, authorisation matrices and observed performance assessments for all testing and calibration activities." },
+  { n: 4, icon: ClipboardCheck, title: "Internal Audit",           desc: "Full internal audit against ISO/IEC 17025 clauses — covering management system, technical processes, method validation and measurement traceability before KENAS assessment." },
+  { n: 5, icon: AlertTriangle,  title: "Corrective Actions",       desc: "Root-cause analysis and corrective action management for all audit findings — with documented closure evidence and effectiveness verification for assessors." },
+  { n: 6, icon: ShieldCheck,    title: "Pre-Assessment Review",    desc: "Simulated assessment visit verifying documentation, evidence packages, equipment calibration status and personnel readiness before the formal KENAS assessment." },
+  { n: 7, icon: RefreshCw,      title: "Surveillance Readiness",   desc: "Ongoing support between accreditation cycles — managing scope changes, addressing post-assessment findings and preparing for surveillance visits." },
+];
+
+const deliverables = [
+  "ISO/IEC 17025 gap assessment report and readiness roadmap",
+  "Laboratory quality manual",
+  "Standard operating procedures (SOPs) suite",
+  "Method validation and verification records",
+  "Measurement uncertainty budgets",
+  "Equipment calibration and traceability register",
+  "Internal audit report and nonconformity register",
+  "Corrective and preventive action (CAPA) register",
 ];
 
 function Iso17025Page() {
   return (
     <SiteLayout>
-      {/* Hero */}
-      <section className="relative overflow-hidden text-white" style={{ background: "var(--gradient-hero)" }}>
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "28px 28px" }} />
-        <div className="absolute -top-20 right-0 size-96 rounded-full bg-[var(--color-teal)]/15 blur-3xl" />
-        <div className="container-page relative py-20 md:py-28 max-w-4xl">
-          <div className="inline-block text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-4 px-3 py-1.5 rounded-full bg-white/8 border border-white/10">
-            Accreditation Support · Testing & Calibration Laboratories
+      <PageHero
+        eyebrow="ISO/IEC 17025"
+        title="Accreditation Readiness for Testing & Calibration Laboratories"
+        subtitle="QUALIFY supports testing and calibration laboratories preparing for KENAS accreditation to ISO/IEC 17025 — from gap assessment through method validation, internal audit and pre-assessment review."
+        variant="inspector"
+      />
+
+      {/* Intro */}
+      <section className="container-page py-16 max-w-4xl">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 className="font-display text-2xl font-bold text-white mb-4">What is ISO/IEC 17025?</h2>
+            <p className="text-white/70 leading-relaxed mb-4">
+              ISO/IEC 17025 specifies the general requirements for the competence, impartiality and consistent operation of testing and calibration laboratories. It covers both technical competence and the quality management system that supports reliable laboratory results.
+            </p>
+            <p className="text-white/70 leading-relaxed mb-4">
+              Accreditation to ISO/IEC 17025 by KENAS (Kenya Accreditation Service) demonstrates that your laboratory produces technically valid results using validated methods, traceable measurements and qualified personnel operating within a robust quality management system.
+            </p>
+            <p className="text-white/70 leading-relaxed">
+              QUALIFY does not issue accreditation. We prepare your laboratory to meet the standard genuinely — ensuring your documentation, measurement processes and personnel withstand rigorous external assessment.
+            </p>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-5">
-            ISO/IEC 17025{" "}
-            <span className="block text-[var(--color-teal)]">Accreditation Readiness</span>
-          </h1>
-          <p className="text-lg text-white/75 leading-relaxed max-w-2xl mb-8">
-            QUALIFY supports testing and calibration laboratories in Kenya in building a compliant management system and achieving genuine readiness for accreditation by the{" "}
-            <strong className="text-white">Kenya Accreditation Service (KENAS)</strong> under ISO/IEC 17025:2017.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-7 py-3.5 font-semibold hover:opacity-90 transition-opacity">
-              Request Accreditation Support <ArrowRight className="size-4" />
-            </Link>
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-white/8 border border-white/15 text-white px-7 py-3.5 font-semibold hover:bg-white/15 transition-colors">
-              Speak to a Quality Advisor
-            </Link>
+          <div className="rounded-2xl border border-white/10 p-6" style={{ background: "linear-gradient(135deg, rgba(6,43,79,0.8) 0%, rgba(0,122,138,0.2) 100%)" }}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="grid place-items-center size-10 rounded-xl bg-[var(--color-teal)]/20 border border-[var(--color-teal)]/30">
+                <FlaskConical className="size-5 text-[var(--color-teal)]" />
+              </div>
+              <h3 className="font-display font-semibold text-white">Who This Is For</h3>
+            </div>
+            <ul className="space-y-2.5 text-sm text-white/70">
+              {["Testing laboratories (chemical, mechanical, environmental)", "Calibration laboratories and metrology facilities", "Food and water testing laboratories", "Construction materials testing laboratories", "Electrical and electronics testing facilities", "Laboratories seeking KENAS accreditation"].map(w => (
+                <li key={w} className="flex items-start gap-2">
+                  <CheckCircle2 className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />
+                  {w}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Tab nav */}
-      <div className="border-b border-border bg-background sticky top-16 z-40">
+      {/* Requirements */}
+      <section className="py-16" style={{ background: "linear-gradient(180deg, rgba(6,43,79,0.4) 0%, transparent 100%)" }}>
         <div className="container-page">
-          <div className="flex gap-1 overflow-x-auto py-2">
-            {tabs.map((t) => (
-              <Link
-                key={t.label}
-                to={t.to}
-                className="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                activeProps={{ className: "flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium bg-[var(--color-ocean)]/10 text-[var(--color-ocean)] font-semibold" }}
-                activeOptions={{ exact: true }}
-              >
-                {t.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* About the standard */}
-      <section className="container-page py-16 grid lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-3">The Standard</div>
-          <h2 className="font-display text-3xl font-bold text-navy mb-4">What is ISO/IEC 17025?</h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            ISO/IEC 17025:2017 specifies the general requirements for the competence, impartiality and consistent operation of laboratories performing testing, calibration and sampling. It applies to all organisations operating laboratories, regardless of the number of personnel or the extent of the scope of testing or calibration activities.
-          </p>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            KENAS accreditation under ISO/IEC 17025 demonstrates to customers, regulators and trade bodies that your laboratory produces technically valid and metrologically traceable results. It is increasingly a contractual requirement in export, regulatory, environmental and industrial testing markets in Kenya and the region.
-          </p>
-          <div className="space-y-2">
-            {[
-              "Provides internationally recognised proof of technical competence",
-              "Ensures metrological traceability of test and calibration results",
-              "Reduces re-testing costs for customers in cross-border trade",
-              "Increasingly required for regulatory and export compliance in Kenya",
-            ].map((t) => (
-              <div key={t} className="flex items-start gap-2.5 text-sm text-foreground">
-                <CheckCircle2 className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />
-                {t}
+          <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">Standard Requirements Overview</h2>
+          <p className="text-white/55 text-center mb-10 text-sm">Key clause areas of ISO/IEC 17025 that your laboratory quality system must address</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {requirements.map(r => (
+              <div key={r.clause} className="rounded-xl border border-white/10 p-5 hover:border-[var(--color-teal)]/40 transition-colors" style={{ background: "rgba(6,43,79,0.5)" }}>
+                <div className="text-xs font-bold text-[var(--color-teal)] uppercase tracking-widest mb-1">{r.clause}</div>
+                <h3 className="font-display font-semibold text-white mb-2">{r.title}</h3>
+                <p className="text-sm text-white/60 leading-relaxed">{r.desc}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="rounded-2xl bg-card border border-border p-6 space-y-4">
-          <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-2">Key Requirements QUALIFY Supports</div>
-          {[
-            { title: "Method Validation & Verification", desc: "Method validation records, measurement uncertainty estimation, fitness-for-purpose assessments and scope of accreditation definition." },
-            { title: "Calibration & Traceability",       desc: "Calibration schedules, equipment registers, calibration certificates review, and traceability chains to national/international measurement standards." },
-            { title: "Proficiency Testing",              desc: "Proficiency testing (PT) / interlaboratory comparison participation plans, result evaluation and corrective action records." },
-            { title: "Sampling Procedures",              desc: "Documented sampling plans, deviation records and environmental condition monitoring — for laboratories that also perform sampling." },
-            { title: "Personnel Competence",             desc: "Competence evaluation frameworks, authorisation records, training documentation and ongoing monitoring for all technical staff." },
-            { title: "Impartiality & Confidentiality",  desc: "Impartiality risk assessment, conflict-of-interest management, and customer confidentiality policies and controls." },
-          ].map((r) => (
-            <div key={r.title} className="flex gap-3">
-              <BadgeCheck className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />
+      </section>
+
+      {/* Journey */}
+      <section className="container-page py-16">
+        <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">Our Readiness Journey</h2>
+        <p className="text-white/55 text-center mb-10 text-sm">How QUALIFY guides your laboratory from current state to accreditation-ready</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {journey.map(({ n, icon: Icon, title, desc }) => (
+            <div key={n} className="rounded-xl border border-white/10 p-5 flex gap-4" style={{ background: "rgba(6,43,79,0.4)" }}>
+              <div className="shrink-0">
+                <div className="grid place-items-center size-9 rounded-lg bg-[var(--color-teal)]/20 border border-[var(--color-teal)]/30">
+                  <Icon className="size-4 text-[var(--color-teal)]" />
+                </div>
+              </div>
               <div>
-                <p className="text-sm font-semibold text-navy">{r.title}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{r.desc}</p>
+                <div className="text-xs text-[var(--color-teal)] font-bold mb-1">Step {n}</div>
+                <h3 className="font-semibold text-white text-sm mb-1">{title}</h3>
+                <p className="text-xs text-white/60 leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Journey */}
-      <section className="bg-muted/40 py-20">
-        <div className="container-page">
-          <div className="mb-12">
-            <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-3">How We Support You</div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy">ISO/IEC 17025 Readiness in 7 Stages</h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl">A structured journey from your current laboratory quality position to genuine KENAS accreditation readiness.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {journey.map((j) => (
-              <div key={j.n} className="rounded-xl bg-card border border-border p-5 hover:border-[var(--color-teal)] transition-colors">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="size-9 rounded-lg bg-gradient-to-br from-[var(--color-ocean)] to-[var(--color-teal)] grid place-items-center text-white shrink-0">
-                    <j.icon className="size-4" />
-                  </div>
-                  <span className="text-xs font-bold text-[var(--color-orange)] uppercase tracking-wider">Stage {j.n}</span>
-                </div>
-                <h3 className="font-display font-bold text-navy text-sm mb-1.5">{j.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{j.desc}</p>
+      {/* Deliverables */}
+      <section className="py-16" style={{ background: "rgba(6,43,79,0.35)" }}>
+        <div className="container-page max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-white mb-8 text-center">What We Deliver</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {deliverables.map(d => (
+              <div key={d} className="flex items-start gap-3 rounded-lg border border-white/8 p-4" style={{ background: "rgba(6,43,79,0.4)" }}>
+                <CheckCircle2 className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />
+                <span className="text-sm text-white/75">{d}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* KENAS note */}
-      <section className="container-page py-16 max-w-3xl">
-        <div className="rounded-xl border border-[var(--color-ocean)]/30 bg-[var(--color-ocean)]/5 px-6 py-5">
-          <p className="text-sm text-foreground leading-relaxed">
-            <strong>Important:</strong> QUALIFY supports laboratories in implementing ISO/IEC 17025 requirements and preparing for external assessment. Accreditation is granted solely by{" "}
-            <strong>Kenya Accreditation Service (KENAS)</strong> following their formal assessment process. QUALIFY does not issue, guarantee, or represent accreditation outcomes.
-          </p>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="container-page pb-20">
-        <div className="rounded-2xl bg-navy text-white p-10 md:p-14 relative overflow-hidden">
-          <div className="absolute -right-10 -top-10 size-64 rounded-full bg-[var(--color-orange)]/15 blur-3xl" />
-          <div className="absolute -left-10 bottom-0 size-48 rounded-full bg-[var(--color-teal)]/15 blur-3xl" />
-          <div className="relative max-w-2xl">
-            <h3 className="font-display text-2xl md:text-3xl font-bold mb-3">Ready to pursue ISO/IEC 17025 accreditation?</h3>
-            <p className="text-white/70 leading-relaxed mb-7">Tell us about your laboratory and your target scope — we will give you an honest picture of what KENAS accreditation readiness requires.</p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-7 py-3.5 font-semibold hover:opacity-90 transition-opacity">
-                Request Accreditation Support <ArrowRight className="size-4" />
-              </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-white/10 border border-white/20 text-white px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors">
-                Speak to a Quality Advisor
-              </Link>
-            </div>
-          </div>
+      <section className="container-page py-16 text-center">
+        <h2 className="font-display text-2xl font-bold text-white mb-3">Ready to Begin Your Accreditation Journey?</h2>
+        <p className="text-white/60 mb-8 max-w-xl mx-auto">Contact us to discuss your laboratory's current position and how QUALIFY can support your path to ISO/IEC 17025 accreditation.</p>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-6 py-3 font-semibold hover:opacity-90 transition-opacity">
+            Start the Conversation <ArrowRight className="size-4" />
+          </Link>
+          <Link to="/certification-portal" className="inline-flex items-center gap-2 rounded-lg border border-white/20 text-white/80 px-6 py-3 font-medium hover:bg-white/5 transition-colors">
+            View All Certification Support
+          </Link>
         </div>
       </section>
     </SiteLayout>
