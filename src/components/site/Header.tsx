@@ -29,23 +29,23 @@ const serviceCategories = [
   {
     label: "Quality Assurance & Compliance",
     icon: Award,
-    href: "/services#service-4",
+    href: "/services/",
     accent: "var(--color-teal)",
     items: [
-      { label: "Certification Support",              icon: BadgeCheck,    href: "/services#service-5" },
-      { label: "Training & Consultancy",             icon: GraduationCap, href: "/services#service-6" },
-      { label: "Technical Reporting & Documentation",icon: FileText,      href: "/services#service-7" },
+      { label: "Certification Support",              icon: BadgeCheck,    href: "/services/certification-support" },
+      { label: "Training & Consultancy",             icon: GraduationCap, href: "/services/training-consultancy" },
+      { label: "Technical Reporting & Documentation",icon: FileText,      href: "/services/technical-reporting-documentation" },
     ],
   },
   {
     label: "Marine Inspection & Surveying",
     icon: Ship,
-    href: "/services#service-0",
+    href: "/services/",
     accent: "var(--color-ocean)",
     items: [
-      { label: "Cargo Inspection & Surveying", icon: Package,       href: "/services#service-1" },
-      { label: "Vessel Condition Surveys",     icon: ClipboardCheck,href: "/services#service-2" },
-      { label: "Damage & Loss Assessment",     icon: ShieldAlert,   href: "/services#service-3" },
+      { label: "Cargo Inspection & Surveying", icon: Package,       href: "/services/cargo-inspection-surveying" },
+      { label: "Vessel Condition Surveys",     icon: ClipboardCheck,href: "/services/vessel-condition-surveys" },
+      { label: "Damage & Loss Assessment",     icon: ShieldAlert,   href: "/services/damage-loss-assessment" },
     ],
   },
 ] as const;
