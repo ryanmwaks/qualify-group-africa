@@ -139,6 +139,37 @@ function CertificationPortal() {
         </div>
       </section>
 
+      {/* Accreditation Support */}
+      <section className="container-page py-20">
+        <div className="mb-10">
+          <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-3">Accreditation Support</div>
+          <h2 className="font-display text-3xl font-bold text-navy">KENAS Accreditation Readiness</h2>
+          <p className="mt-3 text-muted-foreground max-w-2xl">
+            For organisations pursuing formal accreditation through the{" "}
+            <strong className="text-navy">Kenya Accreditation Service (KENAS)</strong>, QUALIFY provides dedicated readiness support under the following standards. Each has its own requirements, assessment process and scope — explore the standard relevant to your organisation.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5 mb-6">
+          {[
+            { code: "ISO/IEC 17020", name: "Inspection Bodies", desc: "For organisations performing inspection activities — marine, cargo, structural, environmental and industrial inspection.", to: "/certifications/iso-17020" },
+            { code: "ISO 15189",     name: "Medical Laboratories", desc: "For medical and clinical laboratories providing diagnostic, monitoring and research testing for patient care.", to: "/certifications/iso-15189" },
+            { code: "ISO/IEC 17025", name: "Testing & Calibration Laboratories", desc: "For testing and calibration laboratories — demonstrating technical competence and metrological traceability.", to: "/certifications/iso-17025" },
+          ].map((s) => (
+            <Link key={s.code} to={s.to} className="group rounded-xl border border-border bg-card p-5 hover:border-[var(--color-teal)] hover:shadow-[0_0_20px_rgba(0,122,138,0.1)] transition-all">
+              <div className="text-xs font-bold text-[var(--color-ocean)] uppercase tracking-wider mb-2">{s.code}</div>
+              <h3 className="font-display font-bold text-navy mb-2">{s.name}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">{s.desc}</p>
+              <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-teal)] group-hover:gap-2.5 transition-all">
+                View Support <ArrowRight className="size-3.5" />
+              </div>
+            </Link>
+          ))}
+        </div>
+        <p className="text-xs text-muted-foreground">
+          QUALIFY supports readiness preparation. Accreditation is granted solely by KENAS following their formal assessment process.
+        </p>
+      </section>
+
       {/* CTA */}
       <section className="container-page py-20">
         <div className="rounded-2xl bg-navy text-white p-10 md:p-14 relative overflow-hidden">

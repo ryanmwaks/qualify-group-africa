@@ -34,10 +34,17 @@ const aboutMenu = [
   ["QMS Solutions", "/qms-solutions"],
 ] as const;
 
+const certificationsMenu = [
+  ["Certification & Accreditation", "/certification-portal"],
+  ["ISO/IEC 17020 — Inspection Bodies", "/certifications/iso-17020"],
+  ["ISO 15189 — Medical Laboratories", "/certifications/iso-15189"],
+  ["ISO/IEC 17025 — Testing & Cal. Labs", "/certifications/iso-17025"],
+] as const;
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [openMenu, setOpenMenu] = useState<null | "about" | "services" | "qmsSolutions">(null);
+  const [openMenu, setOpenMenu] = useState<null | "about" | "services" | "qmsSolutions" | "certifications">(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -86,6 +93,7 @@ export function Header() {
           <Dropdown label="About" open={openMenu === "about"} onEnter={() => enter("about")} onLeave={leave} items={aboutMenu} scrolled={scrolled} />
           <Dropdown label="Services" open={openMenu === "services"} onEnter={() => enter("services")} onLeave={leave} items={servicesMenu} scrolled={scrolled} />
           <NavLink to="/industries" scrolled={scrolled}>Industries</NavLink>
+          <Dropdown label="Certifications" open={openMenu === "certifications"} onEnter={() => enter("certifications")} onLeave={leave} items={certificationsMenu} scrolled={scrolled} />
           <Dropdown label="QMS Solutions" open={openMenu === "qmsSolutions"} onEnter={() => enter("qmsSolutions")} onLeave={leave} items={qmsSolutionsMenu} scrolled={scrolled} />
           <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
             className={`px-3 py-2 text-sm font-medium rounded-md ${navHover} inline-flex items-center gap-1 transition-colors ${navText}`}>
@@ -120,6 +128,7 @@ export function Header() {
             <MobileGroup label="About" items={aboutMenu} onClose={() => setOpen(false)} />
             <MobileGroup label="Services" items={servicesMenu} onClose={() => setOpen(false)} />
             <MobileLink to="/industries" onClose={() => setOpen(false)}>Industries</MobileLink>
+            <MobileGroup label="Certifications" items={certificationsMenu} onClose={() => setOpen(false)} />
             <MobileGroup label="QMS Solutions" items={qmsSolutionsMenu} onClose={() => setOpen(false)} />
             <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
               className="px-3 py-3 text-sm font-medium rounded-md hover:bg-white/10 text-white/85 hover:text-white inline-flex items-center gap-1">

@@ -27,6 +27,7 @@ import { Route as CertificationPortalRouteImport } from './routes/certification-
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CertificationsIndexRouteImport } from './routes/certifications/index'
 import { Route as IndustrySmeRouteImport } from './routes/industry/sme'
 import { Route as IndustryOilGasRouteImport } from './routes/industry/oil-gas'
 import { Route as IndustryMaritimeRouteImport } from './routes/industry/maritime'
@@ -36,6 +37,9 @@ import { Route as IndustryLaboratoriesRouteImport } from './routes/industry/labo
 import { Route as IndustryInspectionRouteImport } from './routes/industry/inspection'
 import { Route as IndustryHealthcareRouteImport } from './routes/industry/healthcare'
 import { Route as IndustryGovernmentRouteImport } from './routes/industry/government'
+import { Route as CertificationsIso17025RouteImport } from './routes/certifications/iso-17025'
+import { Route as CertificationsIso17020RouteImport } from './routes/certifications/iso-17020'
+import { Route as CertificationsIso15189RouteImport } from './routes/certifications/iso-15189'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -127,6 +131,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationsIndexRoute = CertificationsIndexRouteImport.update({
+  id: '/certifications/',
+  path: '/certifications/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndustrySmeRoute = IndustrySmeRouteImport.update({
   id: '/industry/sme',
   path: '/industry/sme',
@@ -172,6 +181,21 @@ const IndustryGovernmentRoute = IndustryGovernmentRouteImport.update({
   path: '/industry/government',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationsIso17025Route = CertificationsIso17025RouteImport.update({
+  id: '/certifications/iso-17025',
+  path: '/certifications/iso-17025',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificationsIso17020Route = CertificationsIso17020RouteImport.update({
+  id: '/certifications/iso-17020',
+  path: '/certifications/iso-17020',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificationsIso15189Route = CertificationsIso15189RouteImport.update({
+  id: '/certifications/iso-15189',
+  path: '/certifications/iso-15189',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -192,6 +216,9 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/certifications/iso-15189': typeof CertificationsIso15189Route
+  '/certifications/iso-17020': typeof CertificationsIso17020Route
+  '/certifications/iso-17025': typeof CertificationsIso17025Route
   '/industry/government': typeof IndustryGovernmentRoute
   '/industry/healthcare': typeof IndustryHealthcareRoute
   '/industry/inspection': typeof IndustryInspectionRoute
@@ -201,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/industry/maritime': typeof IndustryMaritimeRoute
   '/industry/oil-gas': typeof IndustryOilGasRoute
   '/industry/sme': typeof IndustrySmeRoute
+  '/certifications/': typeof CertificationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -221,6 +249,9 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/certifications/iso-15189': typeof CertificationsIso15189Route
+  '/certifications/iso-17020': typeof CertificationsIso17020Route
+  '/certifications/iso-17025': typeof CertificationsIso17025Route
   '/industry/government': typeof IndustryGovernmentRoute
   '/industry/healthcare': typeof IndustryHealthcareRoute
   '/industry/inspection': typeof IndustryInspectionRoute
@@ -230,6 +261,7 @@ export interface FileRoutesByTo {
   '/industry/maritime': typeof IndustryMaritimeRoute
   '/industry/oil-gas': typeof IndustryOilGasRoute
   '/industry/sme': typeof IndustrySmeRoute
+  '/certifications': typeof CertificationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -251,6 +283,9 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/certifications/iso-15189': typeof CertificationsIso15189Route
+  '/certifications/iso-17020': typeof CertificationsIso17020Route
+  '/certifications/iso-17025': typeof CertificationsIso17025Route
   '/industry/government': typeof IndustryGovernmentRoute
   '/industry/healthcare': typeof IndustryHealthcareRoute
   '/industry/inspection': typeof IndustryInspectionRoute
@@ -260,6 +295,7 @@ export interface FileRoutesById {
   '/industry/maritime': typeof IndustryMaritimeRoute
   '/industry/oil-gas': typeof IndustryOilGasRoute
   '/industry/sme': typeof IndustrySmeRoute
+  '/certifications/': typeof CertificationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -282,6 +318,9 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/certifications/iso-15189'
+    | '/certifications/iso-17020'
+    | '/certifications/iso-17025'
     | '/industry/government'
     | '/industry/healthcare'
     | '/industry/inspection'
@@ -291,6 +330,7 @@ export interface FileRouteTypes {
     | '/industry/maritime'
     | '/industry/oil-gas'
     | '/industry/sme'
+    | '/certifications/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -311,6 +351,9 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/certifications/iso-15189'
+    | '/certifications/iso-17020'
+    | '/certifications/iso-17025'
     | '/industry/government'
     | '/industry/healthcare'
     | '/industry/inspection'
@@ -320,6 +363,7 @@ export interface FileRouteTypes {
     | '/industry/maritime'
     | '/industry/oil-gas'
     | '/industry/sme'
+    | '/certifications'
   id:
     | '__root__'
     | '/'
@@ -340,6 +384,9 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/certifications/iso-15189'
+    | '/certifications/iso-17020'
+    | '/certifications/iso-17025'
     | '/industry/government'
     | '/industry/healthcare'
     | '/industry/inspection'
@@ -349,6 +396,7 @@ export interface FileRouteTypes {
     | '/industry/maritime'
     | '/industry/oil-gas'
     | '/industry/sme'
+    | '/certifications/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -370,6 +418,9 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   StandardsRoute: typeof StandardsRoute
   TermsRoute: typeof TermsRoute
+  CertificationsIso15189Route: typeof CertificationsIso15189Route
+  CertificationsIso17020Route: typeof CertificationsIso17020Route
+  CertificationsIso17025Route: typeof CertificationsIso17025Route
   IndustryGovernmentRoute: typeof IndustryGovernmentRoute
   IndustryHealthcareRoute: typeof IndustryHealthcareRoute
   IndustryInspectionRoute: typeof IndustryInspectionRoute
@@ -379,6 +430,7 @@ export interface RootRouteChildren {
   IndustryMaritimeRoute: typeof IndustryMaritimeRoute
   IndustryOilGasRoute: typeof IndustryOilGasRoute
   IndustrySmeRoute: typeof IndustrySmeRoute
+  CertificationsIndexRoute: typeof CertificationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -509,6 +561,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certifications/': {
+      id: '/certifications/'
+      path: '/certifications'
+      fullPath: '/certifications/'
+      preLoaderRoute: typeof CertificationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/industry/sme': {
       id: '/industry/sme'
       path: '/industry/sme'
@@ -572,6 +631,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustryGovernmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certifications/iso-17025': {
+      id: '/certifications/iso-17025'
+      path: '/certifications/iso-17025'
+      fullPath: '/certifications/iso-17025'
+      preLoaderRoute: typeof CertificationsIso17025RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certifications/iso-17020': {
+      id: '/certifications/iso-17020'
+      path: '/certifications/iso-17020'
+      fullPath: '/certifications/iso-17020'
+      preLoaderRoute: typeof CertificationsIso17020RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certifications/iso-15189': {
+      id: '/certifications/iso-15189'
+      path: '/certifications/iso-15189'
+      fullPath: '/certifications/iso-15189'
+      preLoaderRoute: typeof CertificationsIso15189RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -594,6 +674,9 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   StandardsRoute: StandardsRoute,
   TermsRoute: TermsRoute,
+  CertificationsIso15189Route: CertificationsIso15189Route,
+  CertificationsIso17020Route: CertificationsIso17020Route,
+  CertificationsIso17025Route: CertificationsIso17025Route,
   IndustryGovernmentRoute: IndustryGovernmentRoute,
   IndustryHealthcareRoute: IndustryHealthcareRoute,
   IndustryInspectionRoute: IndustryInspectionRoute,
@@ -603,6 +686,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustryMaritimeRoute: IndustryMaritimeRoute,
   IndustryOilGasRoute: IndustryOilGasRoute,
   IndustrySmeRoute: IndustrySmeRoute,
+  CertificationsIndexRoute: CertificationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
