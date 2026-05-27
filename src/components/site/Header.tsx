@@ -27,10 +27,17 @@ const aboutMenu = [
   ["Complaints and Appeals", "/complaints-appeals"],
 ] as const;
 
+const certificationsMenu = [
+  ["ISO/IEC 17020 — Inspection Bodies", "/certifications/iso-17020"],
+  ["ISO 15189 — Medical Laboratories", "/certifications/iso-15189"],
+  ["ISO/IEC 17025 — Testing & Calibration Labs", "/certifications/iso-17025"],
+  ["All Certification Support", "/certification-portal"],
+] as const;
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [openMenu, setOpenMenu] = useState<null | "about" | "services">(null);
+  const [openMenu, setOpenMenu] = useState<null | "about" | "services" | "certifications">(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -40,7 +47,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const enter = (m: "about" | "services") => {
+  const enter = (m: "about" | "services" | "certifications") => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(m);
   };
@@ -75,6 +82,7 @@ export function Header() {
           <NavLink to="/" exact scrolled={scrolled}>Home</NavLink>
           <Dropdown label="About" open={openMenu === "about"} onEnter={() => enter("about")} onLeave={leave} items={aboutMenu} scrolled={scrolled} />
           <Dropdown label="Services" open={openMenu === "services"} onEnter={() => enter("services")} onLeave={leave} items={servicesMenu} scrolled={scrolled} />
+          <Dropdown label="Certifications" open={openMenu === "certifications"} onEnter={() => enter("certifications")} onLeave={leave} items={certificationsMenu} scrolled={scrolled} />
           <NavLink to="/industries" scrolled={scrolled}>Industries</NavLink>
           <NavLink to="/qms-plug" scrolled={scrolled}>QMS Platform</NavLink>
           <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
@@ -113,6 +121,7 @@ export function Header() {
             <MobileLink to="/" onClose={() => setOpen(false)}>Home</MobileLink>
             <MobileGroup label="About" items={aboutMenu} onClose={() => setOpen(false)} />
             <MobileGroup label="Services" items={servicesMenu} onClose={() => setOpen(false)} />
+            <MobileGroup label="Certifications" items={certificationsMenu} onClose={() => setOpen(false)} />
             <MobileLink to="/industries" onClose={() => setOpen(false)}>Industries</MobileLink>
             <MobileLink to="/qms-plug" onClose={() => setOpen(false)}>QMS Platform</MobileLink>
             <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
