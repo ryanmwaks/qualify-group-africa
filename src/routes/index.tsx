@@ -9,9 +9,9 @@ import portTangaImg from "@/assets/port-tanga.jpg";
 import { useState, useEffect, useCallback } from "react";
 import {
   Ship, Package, ClipboardCheck, ShieldAlert, Award, GraduationCap, FileText, Cpu,
-  MapPin, Anchor, Zap, Lock, ArrowRight,
+  MapPin, Anchor, Zap, Lock, Quote, ArrowRight, CheckCircle2,
   Building2, Truck, Warehouse, Users, ChevronLeft, ChevronRight,
-  BarChart3, TrendingUp
+  BarChart3, TrendingUp, BookOpen
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -39,14 +39,14 @@ const trustBadges = [
 ];
 
 const services = [
-  { icon: Cpu,           title: "QUALIFY QMS Platform",           desc: "Cloud-based digital quality management — documentation, audits, CAPA and compliance in one system." },
-  { icon: Award,         title: "Quality Assurance & Compliance", desc: "Stronger systems, internal controls, documentation and certification readiness." },
   { icon: Ship,          title: "Marine Inspection & Surveying",  desc: "Independent inspection and technical reporting for marine assets and operations." },
   { icon: Package,       title: "Cargo Inspection & Surveying",   desc: "Verification of cargo condition, quantity, handling, loading and discharge." },
   { icon: ClipboardCheck,title: "Vessel Condition Surveys",       desc: "Assessment of condition, operational readiness, safety and compliance status." },
   { icon: ShieldAlert,   title: "Damage & Loss Assessment",       desc: "Independent assessments for insurers, logistics firms and cargo owners." },
+  { icon: Award,         title: "Quality Assurance & Compliance", desc: "Stronger systems, internal controls, documentation and compliance readiness." },
   { icon: GraduationCap, title: "Training & Consultancy",         desc: "Practical advisory in inspection, quality management and reporting." },
   { icon: FileText,      title: "Technical Reporting",            desc: "Clear, structured reports to support decisions, claims and audits." },
+  { icon: Cpu,           title: "QUALIFY QMS Platform",           desc: "Digital quality management for documentation, audits and compliance." },
 ];
 
 const trust = [
@@ -195,17 +195,17 @@ function SplitHero() {
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur text-xs font-semibold tracking-wider uppercase text-[var(--color-teal)] border border-white/10">
             <span className="size-2 rounded-full bg-[var(--color-orange)] animate-pulse" />
-            Digital QMS · Marine Inspection · Cargo · Quality
+            Independent · Marine · Cargo · Quality
           </div>
 
           <h1 className="font-display text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.05] text-white">
-            <span className="text-gradient-navy">QMS Platform</span>{" "}
-            &amp; Marine Inspection{" "}
+            Independent Marine, Cargo &amp;{" "}
+            <span className="text-gradient-navy">Quality Inspection</span>{" "}
             Experts in Kenya
           </h1>
 
           <p className="text-lg text-white/75 leading-relaxed max-w-xl">
-            Digital quality management systems and independent marine, cargo &amp; quality inspection — one trusted partner for compliance, certification readiness and operational excellence.
+            Reliable inspection, surveying, technical reporting, certification readiness, training and digital quality management solutions for maritime, logistics, compliance and quality-driven industries.
           </p>
 
           {/* Trust badges */}
@@ -219,13 +219,13 @@ function SplitHero() {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-3">
-            <Link to="/qms-solutions"
+            <Link to="/contact"
               className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-7 py-3.5 font-semibold shadow-lg hover:opacity-90 hover:shadow-xl transition-all">
-              Explore QMS Platform <ArrowRight className="size-4" />
+              Request Inspection Support <ArrowRight className="size-4" />
             </Link>
             <Link to="/services"
               className="inline-flex items-center gap-2 rounded-lg bg-white/8 backdrop-blur border border-white/15 text-white px-7 py-3.5 font-semibold hover:bg-white/15 transition-all">
-              Marine &amp; Cargo Services
+              Explore Services
             </Link>
           </div>
 
@@ -323,48 +323,6 @@ function Home() {
       {/* Hero */}
       <SplitHero />
 
-      {/* QMS Platform showcase — primary product, shown immediately after hero */}
-      <section className="container-page py-20 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="space-y-5">
-          <div className="inline-block text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold px-3 py-1 rounded-full bg-[var(--color-teal)]/10 border border-[var(--color-teal)]/20">Digital QMS Platform</div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-navy leading-snug">
-            Replace Paper-Based Quality Management with a <span className="text-[var(--color-ocean)]">Cloud Digital System</span>
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            The QUALIFY QMS Platform is a structured, cloud-based digital system covering documentation control, audits, CAPA, compliance monitoring and training records — implemented and supported by the QUALIFY team from day one.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              { icon: FileText,      label: "Document Control",         desc: "Version-controlled policies, procedures and records" },
-              { icon: ClipboardCheck,label: "Internal Audit Module",    desc: "Schedule, execute and close audits digitally" },
-              { icon: ShieldAlert,   label: "CAPA Management",          desc: "Track corrective and preventive actions to closure" },
-              { icon: BarChart3,     label: "Compliance Dashboards",    desc: "Real-time visibility across your quality system" },
-              { icon: GraduationCap, label: "Training Records",         desc: "Competence tracking and staff development logs" },
-              { icon: TrendingUp,    label: "Continual Improvement",    desc: "Built-in improvement cycle and performance trends" },
-            ].map((f) => (
-              <div key={f.label} className="flex gap-3 rounded-xl border border-border bg-card p-3 hover:border-[var(--color-teal)] transition-colors">
-                <div className="size-8 rounded-lg bg-[var(--color-teal)]/10 grid place-items-center text-[var(--color-teal)] shrink-0">
-                  <f.icon className="size-4" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-navy">{f.label}</div>
-                  <div className="text-xs text-muted-foreground leading-snug">{f.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Link to="/qms-solutions" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-navy)] text-white px-6 py-3 font-semibold hover:opacity-90 transition-opacity">
-              Explore Platform <ArrowRight className="size-4" />
-            </Link>
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 font-semibold text-navy hover:bg-muted transition-colors">
-              Book a Demo
-            </Link>
-          </div>
-        </div>
-        <img src={qmsImg} alt="QUALIFY QMS Platform Dashboard" width={1280} height={896} loading="lazy" decoding="async" className="rounded-2xl shadow-[var(--shadow-elegant)] border border-border" />
-      </section>
-
       {/* Port strip */}
       <section className="border-b border-border overflow-hidden">
         <div className="flex">
@@ -414,8 +372,8 @@ function Home() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-3">What We Do</div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy">QMS &amp; Inspection Services</h2>
-            <p className="mt-3 text-muted-foreground max-w-xl">Digital quality management platform and independent inspection services — delivered by one experienced team.</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy">Our Services</h2>
+            <p className="mt-3 text-muted-foreground max-w-xl">Independent inspection, technical reporting and quality assurance — delivered professionally and with full accountability.</p>
           </div>
           <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-teal)] hover:underline shrink-0">
             View all services <ArrowRight className="size-4" />
@@ -458,6 +416,33 @@ function Home() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* QMS Platform feature */}
+      <section className="container-page py-20 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-5">
+          <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold">Digital Platform</div>
+          <h2 className="font-display text-3xl font-bold text-navy">QUALIFY QMS Platform</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Replace paper-based quality management with a structured, cloud-based digital system covering documentation, audits, CAPA, compliance monitoring and training records — implemented and supported by the QUALIFY team.
+          </p>
+          <ul className="space-y-2">
+            {["Document control and version management", "Internal audit scheduling and tracking", "Corrective and preventive action (CAPA)", "Compliance monitoring dashboards", "Training records and competence tracking"].map((f) => (
+              <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
+                <CheckCircle2 className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />{f}
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Link to="/qms-plug" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-navy)] text-white px-6 py-3 font-semibold hover:opacity-90 transition-opacity">
+              Explore Platform <ArrowRight className="size-4" />
+            </Link>
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 font-semibold text-navy hover:bg-muted transition-colors">
+              Request Demo
+            </Link>
+          </div>
+        </div>
+        <img src={qmsImg} alt="QMS Platform" width={1280} height={896} loading="lazy" className="rounded-2xl shadow-[var(--shadow-elegant)] border border-border" />
       </section>
 
       {/* Articles */}
