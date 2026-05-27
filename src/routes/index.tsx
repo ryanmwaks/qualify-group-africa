@@ -328,7 +328,7 @@ function Home() {
         <div className="flex">
           {portSlides.map((p, i) => (
             <div key={p.location} className="relative flex-1 h-24 overflow-hidden group">
-              <img src={p.img} alt={p.location} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src={p.img} alt={p.location} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-black/55 group-hover:bg-black/35 transition-colors duration-300" />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-2">
                 <span className="text-lg leading-none mb-0.5">{p.flag}</span>
