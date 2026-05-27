@@ -29,12 +29,14 @@ interface Service {
   deliv: string[];
   cta?: CTA;
   internalLink?: string;
+  pageLink?: string;
 }
 
 const services: Service[] = [
   {
     icon: Ship,
     title: "Marine Inspection & Surveying",
+    pageLink: "/services/marine-inspection",
     desc: "QUALIFY provides independent, impartial marine inspection and survey services covering vessel assets, marine equipment, operations and related documentation across ports and locations in Kenya and the region.",
     context: "Our marine surveyors attend vessel assignments on behalf of owners, operators, insurers, charterers and cargo interests. Each inspection is conducted systematically — from access and pre-inspection briefing through to findings documentation and report delivery.",
     how: [
@@ -57,6 +59,7 @@ const services: Service[] = [
   {
     icon: Package,
     title: "Cargo Inspection & Surveying",
+    pageLink: "/services/cargo-inspection",
     desc: "We provide independent cargo inspection and verification services covering condition, quantity, packaging, handling, loading, stowage and discharge across bulk, containerised, break-bulk and project cargo types.",
     context: "Cargo inspection assignments are carried out at origin, port of loading, port of discharge or destination — wherever the inspection is most operationally relevant. Our surveyors work alongside stevedores, terminal operators and cargo handlers to provide an objective, third-party record of cargo condition and handling.",
     how: [
@@ -79,6 +82,7 @@ const services: Service[] = [
   {
     icon: ClipboardCheck,
     title: "Vessel Condition Surveys",
+    pageLink: "/services/vessel-surveys",
     desc: "We conduct structured, independent assessments of vessel overall condition, equipment status, safety systems, maintenance standard and operational readiness — giving all parties a clear, factual picture before a transaction, charter or operational commitment.",
     context: "Condition surveys are attended on-board by a QUALIFY surveyor. The assessment covers hull, superstructure, deck equipment, machinery spaces, safety gear, accommodation and documentation. Findings are graded and recorded with photographic evidence to support decision-making by buyers, charterers, financiers or flag state representatives.",
     how: [
@@ -103,6 +107,7 @@ const services: Service[] = [
   {
     icon: ShieldAlert,
     title: "Damage & Loss Assessment",
+    pageLink: "/services/damage-loss",
     desc: "QUALIFY provides independent, evidence-based damage and loss assessments for cargo, vessels and marine equipment — supporting claims resolution, legal proceedings and insurance decision-making with accurate, structured technical findings.",
     context: "Our surveyors attend the damaged asset promptly and conduct an objective assessment. We identify the nature, extent and likely cause of damage — and quantify the loss where applicable. Reports are structured to withstand scrutiny from adjusters, legal teams and arbitration panels.",
     how: [
@@ -126,6 +131,7 @@ const services: Service[] = [
   {
     icon: Award,
     title: "Quality Assurance & Compliance",
+    pageLink: "/services/quality-assurance",
     desc: "We help organizations build, strengthen and maintain quality systems, internal controls and compliance frameworks — making operations more consistent, audit-ready and aligned with applicable standards.",
     context: "Our quality advisors work directly with your team on-site or remotely — reviewing existing systems, identifying gaps and supporting practical improvements. The approach is hands-on and focused on what actually works in your operational context, not generic templates.",
     how: [
@@ -177,6 +183,7 @@ const services: Service[] = [
   {
     icon: GraduationCap,
     title: "Training & Consultancy",
+    pageLink: "/services/training-consultancy",
     desc: "QUALIFY delivers practical, sector-grounded training programs and advisory services in inspection, quality management, auditing, documentation, compliance and continuous improvement — tailored to your team's role and experience level.",
     context: "Training is delivered on-site at your premises, at an agreed venue, or in a blended format combining in-person and remote sessions. Content is developed specifically for each engagement — not off-the-shelf slides. Each session is structured to translate theory into practical competence that participants can apply immediately.",
     how: [
@@ -201,6 +208,7 @@ const services: Service[] = [
   {
     icon: FileText,
     title: "Technical Reporting & Documentation",
+    pageLink: "/services/technical-reporting",
     desc: "We produce clear, structured, professionally written technical reports and documentation that support decision-making, claims resolution, audit compliance and management review — written to be understood by technical and non-technical audiences alike.",
     context: "Our technical writers and surveyors work together to produce reports that are factually accurate, logically structured and defensible. Reports follow a consistent format — executive summary, findings, evidence, analysis and recommendations — and are issued within the agreed turnaround time.",
     how: [
@@ -258,12 +266,14 @@ const qmsService     = services.find(s => s.title === "QMS Platform")!;
 
 // ── ISO standards data ────────────────────────────────────────────
 const ISO_STANDARDS = [
-  { code: "ISO 9001:2015",      name: "Quality Management Systems",        scope: "Core QMS standard applicable to any organisation seeking to demonstrate consistent product and service quality." },
-  { code: "ISO 14001:2015",     name: "Environmental Management Systems",  scope: "Framework for managing environmental responsibilities and reducing operational impact." },
-  { code: "ISO 45001:2018",     name: "Occupational Health & Safety",      scope: "International standard for workplace safety management — reduces incidents and demonstrates duty of care." },
-  { code: "ISO 22000:2018",     name: "Food Safety Management",            scope: "End-to-end food safety management for the entire food chain, from producers to retailers." },
-  { code: "ISO/IEC 17025:2017", name: "Testing & Calibration Laboratories",scope: "Competence standard for laboratories producing technically valid results." },
-  { code: "ISO 13485:2016",     name: "Medical Devices QMS",               scope: "Quality management standard specific to manufacturers and suppliers of medical devices." },
+  { code: "ISO 9001:2015",      name: "Quality Management Systems",         scope: "Core QMS standard applicable to any organisation seeking to demonstrate consistent product and service quality.",    certPage: null },
+  { code: "ISO 14001:2015",     name: "Environmental Management Systems",   scope: "Framework for managing environmental responsibilities and reducing operational impact.",                              certPage: null },
+  { code: "ISO 45001:2018",     name: "Occupational Health & Safety",       scope: "International standard for workplace safety management — reduces incidents and demonstrates duty of care.",           certPage: null },
+  { code: "ISO 22000:2018",     name: "Food Safety Management",             scope: "End-to-end food safety management for the entire food chain, from producers to retailers.",                          certPage: null },
+  { code: "ISO/IEC 17025:2017", name: "Testing & Calibration Laboratories", scope: "Competence standard for laboratories producing technically valid test and calibration results.",                      certPage: "/certifications/iso-17025" },
+  { code: "ISO 15189",          name: "Medical Laboratories",               scope: "Quality and competence requirements for medical laboratories — covering the full examination cycle.",                  certPage: "/certifications/iso-15189" },
+  { code: "ISO/IEC 17020",      name: "Inspection Bodies",                  scope: "Competence and impartiality requirements for inspection bodies — Type A, B and C across all sectors.",              certPage: "/certifications/iso-17020" },
+  { code: "ISO 13485:2016",     name: "Medical Devices QMS",                scope: "Quality management standard specific to manufacturers and suppliers of medical devices.",                            certPage: null },
 ];
 
 function IsoAccordion() {
@@ -304,13 +314,19 @@ function IsoAccordion() {
             >
               <div className="px-4 pb-4 pt-1">
                 <p className="text-sm text-muted-foreground leading-relaxed mb-3">{std.scope}</p>
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-teal)] bg-[var(--color-teal)]/10 border border-[var(--color-teal)]/25 rounded-full px-3 py-1">
-                    <BadgeCheck className="size-3" /> QUALIFY supports readiness for this standard
-                  </span>
-                  <Link to="/standards" className="text-xs text-[var(--color-ocean)] hover:underline font-semibold">
-                    View standards →
-                  </Link>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {std.certPage ? (
+                    <Link
+                      to={std.certPage as any}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-teal)] bg-[var(--color-teal)]/10 border border-[var(--color-teal)]/25 rounded-full px-3 py-1 hover:bg-[var(--color-teal)]/20 transition-colors"
+                    >
+                      <BadgeCheck className="size-3" /> View Accreditation Readiness Page →
+                    </Link>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-teal)] bg-[var(--color-teal)]/10 border border-[var(--color-teal)]/25 rounded-full px-3 py-1">
+                      <BadgeCheck className="size-3" /> QUALIFY supports readiness for this standard
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
@@ -428,6 +444,14 @@ function SubServiceCard({
             >
               Request This Service <ArrowRight className="size-4" />
             </Link>
+            {s.pageLink && (
+              <Link
+                to={s.pageLink as any}
+                className="inline-flex items-center gap-1.5 rounded-md border border-border px-4 py-2.5 text-sm font-semibold hover:bg-muted transition-colors"
+              >
+                Full Service Page <ArrowRight className="size-4" />
+              </Link>
+            )}
             {s.cta?.kind === "external" && (
               <a
                 href={s.cta.href}
