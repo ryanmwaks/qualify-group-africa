@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, Clock, Linkedin, Facebook, Twitter, ArrowUpRight, MessageCircle, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Linkedin, Facebook, Twitter, ArrowUpRight, MessageCircle } from "lucide-react";
 import qualifyLogo from "@/assets/qualify-logo.png";
 
 const TRAINING_URL = "https://training.qualify.co.ke";
@@ -7,36 +7,14 @@ const CERT_URL = "https://quality.qualify.co.ke";
 const WA_URL = "https://api.whatsapp.com/send?phone=254723237939";
 
 const company = [
-  { label: "About Us", to: "/about" },
-  { label: "Our History", to: "/history" },
-  { label: "Quality Policy", to: "/quality-policy" },
-  { label: "Partners", to: "/partners" },
-  { label: "Complaints & Appeals", to: "/complaints-appeals" },
-  { label: "Contact", to: "/contact" },
+  { label: "About Us",            to: "/about" },
+  { label: "Our History",         to: "/history" },
+  { label: "Quality Policy",      to: "/quality-policy" },
+  { label: "Partners",            to: "/partners" },
+  { label: "Standards",           to: "/standards" },
+  { label: "Complaints & Appeals",to: "/complaints-appeals" },
+  { label: "Contact",             to: "/contact" },
 ];
-
-const services = [
-  { label: "Marine Inspection", to: "/services" },
-  { label: "Cargo Inspection", to: "/services" },
-  { label: "Vessel Surveys", to: "/services" },
-  { label: "Damage Assessment", to: "/services" },
-  { label: "Quality Assurance", to: "/services" },
-  { label: "Certification Support", to: "/certification-portal" },
-  { label: "Training Services", href: TRAINING_URL },
-  { label: "QMS Platform", to: "/qms-plug" },
-];
-
-const platforms = [
-  { label: "Training Portal", href: TRAINING_URL },
-  { label: "Certification Portal", href: CERT_URL },
-  { label: "QMS Platform", to: "/qms-plug" },
-  { label: "Resources", to: "/resources" },
-  { label: "Standards We Align With", to: "/standards" },
-  { label: "Downloads", to: "/resources" },
-  { label: "FAQs", to: "/contact" },
-];
-
-type NavItem = { label: string; to?: string; href?: string };
 
 export function Footer() {
   return (
@@ -55,27 +33,24 @@ export function Footer() {
       </svg>
       {/* Blueprint grid overlay */}
       <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
-      {/* Teal glow orbs */}
+      {/* Glow orbs */}
       <div className="absolute -top-20 left-1/4 size-80 rounded-full bg-[var(--color-teal)]/8 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 size-60 rounded-full bg-[var(--color-ocean)]/10 blur-3xl pointer-events-none" />
 
-      {/* Main grid */}
-      <div className="relative container-page pt-24 pb-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      {/* ── Main grid: 5 columns on desktop ── */}
+      <div className="relative container-page pt-24 pb-12 grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+
         {/* Col 1: Brand */}
-        <div className="space-y-5">
-          <img
-            src={qualifyLogo}
-            alt="Qualify Group Africa Ltd"
-            className="h-28 w-auto object-contain block"
-          />
+        <div className="space-y-5 sm:col-span-2 lg:col-span-1">
+          <img src={qualifyLogo} alt="Qualify Group Africa Ltd" className="h-28 w-auto object-contain block" />
           <p className="text-sm text-white/70 leading-relaxed">
             Independent marine and cargo inspection, quality assurance, certification readiness, training and digital QMS — based in Mombasa, Kenya.
           </p>
           <div className="flex gap-2.5 pt-1">
             {[
               { href: "https://linkedin.com/company/qualify-group-africa", Icon: Linkedin, label: "LinkedIn" },
-              { href: "https://facebook.com/qualifygroupafrica", Icon: Facebook, label: "Facebook" },
-              { href: "https://twitter.com/qualifyafrica", Icon: Twitter, label: "Twitter" },
+              { href: "https://facebook.com/qualifygroupafrica",           Icon: Facebook, label: "Facebook" },
+              { href: "https://twitter.com/qualifyafrica",                 Icon: Twitter,  label: "Twitter"  },
             ].map(({ href, Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                 className="grid place-items-center size-9 rounded-full border border-white/15 bg-white/5 hover:bg-[var(--color-orange)] hover:border-transparent hover:shadow-[0_0_20px_rgba(228,87,46,0.5)] transition-all">
@@ -88,30 +63,25 @@ export function Footer() {
         {/* Col 2: Company */}
         <FooterCol title="Company" items={company} />
 
-        {/* Col 3: Services */}
-        <FooterCol title="Services" items={services} />
+        {/* Col 3: Services — grouped by category */}
+        <FooterServicesCol />
 
-        {/* Col 4: Contact */}
+        {/* Col 4: Industries + Resources */}
+        <FooterExploreCol />
+
+        {/* Col 5: Contact */}
         <div>
           <h4 className="font-display font-semibold mb-5 text-[var(--color-teal)] uppercase text-xs tracking-[0.2em]">Contact</h4>
           <div className="space-y-4">
             <ContactRow icon={MapPin} label="Office">Mombasa, Kenya</ContactRow>
             <ContactRow icon={Phone} label="Phone" href="tel:+254723237939">+254 723 237 939</ContactRow>
-            <ContactRow icon={Mail} label="Email" href="mailto:info@qualify.co.ke">info@qualify.co.ke</ContactRow>
+            <ContactRow icon={Mail}  label="Email"  href="mailto:info@qualify.co.ke">info@qualify.co.ke</ContactRow>
             <ContactRow icon={Clock} label="Hours">Mon–Fri · 8:00 AM – 5:00 PM EAT</ContactRow>
           </div>
-          <div className="mt-5 flex flex-col gap-2">
+          <div className="mt-5">
             <a href={WA_URL} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#25D366]/20 border border-[#25D366]/30 hover:bg-[#25D366]/30 px-3 py-2.5 text-sm font-semibold text-white transition-colors">
+              className="inline-flex items-center gap-2 rounded-lg bg-[#25D366]/20 border border-[#25D366]/30 hover:bg-[#25D366]/30 px-3 py-2.5 text-sm font-semibold text-white transition-colors w-full justify-center">
               <MessageCircle className="size-4 text-[#25D366]" /> WhatsApp Us
-            </a>
-            <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-[var(--color-teal)] px-3 py-2.5 text-sm font-medium transition-colors">
-              <ExternalLink className="size-3.5" /> Training Portal
-            </a>
-            <a href={CERT_URL} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-[var(--color-teal)] px-3 py-2.5 text-sm font-medium transition-colors">
-              <ExternalLink className="size-3.5" /> Certification Portal
             </a>
           </div>
         </div>
@@ -131,6 +101,128 @@ export function Footer() {
     </footer>
   );
 }
+
+/* ── Services column — two sub-groups ── */
+function FooterServicesCol() {
+  return (
+    <div>
+      <h4 className="font-display font-semibold mb-5 text-[var(--color-teal)] uppercase text-xs tracking-[0.2em]">Services</h4>
+
+      {/* Quality Assurance & Compliance */}
+      <div className="mb-5">
+        <div className="flex items-center gap-1.5 mb-2.5">
+          <div className="h-3 w-0.5 rounded-full bg-[var(--color-teal)]" />
+          <span className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold">Quality Assurance</span>
+        </div>
+        <ul className="space-y-2 pl-2 text-sm">
+          {[
+            ["Certification Support",    "/services/certification-support"],
+            ["Training & Consultancy",   "/services/training-consultancy"],
+            ["Technical Reporting",      "/services/technical-reporting-documentation"],
+          ].map(([label, to]) => (
+            <li key={label}>
+              <Link to={to} className="text-white/65 hover:text-[var(--color-orange)] transition-colors">{label}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Marine Inspection & Surveying */}
+      <div className="mb-5">
+        <div className="flex items-center gap-1.5 mb-2.5">
+          <div className="h-3 w-0.5 rounded-full bg-[var(--color-ocean)]" />
+          <span className="text-[10px] uppercase tracking-[0.15em] text-white/40 font-bold">Marine Inspection</span>
+        </div>
+        <ul className="space-y-2 pl-2 text-sm">
+          {[
+            ["Cargo Inspection",         "/services/cargo-inspection-surveying"],
+            ["Vessel Condition Surveys", "/services/vessel-condition-surveys"],
+            ["Damage & Loss Assessment", "/services/damage-loss-assessment"],
+          ].map(([label, to]) => (
+            <li key={label}>
+              <Link to={to} className="text-white/65 hover:text-[var(--color-orange)] transition-colors">{label}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* QMS Platform */}
+      <div className="pt-3 border-t border-white/8">
+        <Link to="/qms-plug"
+          className="text-sm text-white/65 hover:text-[var(--color-orange)] transition-colors inline-flex items-center gap-1.5">
+          <span className="size-1.5 rounded-full bg-[var(--color-orange)] shrink-0" />
+          QUALIFY QMS Platform
+        </Link>
+      </div>
+
+      {/* View all services */}
+      <div className="mt-3">
+        <Link to="/services/"
+          className="text-xs text-[var(--color-teal)] hover:text-[var(--color-orange)] transition-colors inline-flex items-center gap-1 font-semibold">
+          View all services <ArrowUpRight className="size-3" />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* ── Industries + Resources column ── */
+function FooterExploreCol() {
+  return (
+    <div>
+      <h4 className="font-display font-semibold mb-5 text-[var(--color-teal)] uppercase text-xs tracking-[0.2em]">Industries</h4>
+      <ul className="space-y-2 text-sm mb-5">
+        <li>
+          <Link to="/industries" className="text-white/80 hover:text-[var(--color-orange)] transition-colors font-semibold inline-flex items-center gap-1">
+            View All Industries <ArrowUpRight className="size-3" />
+          </Link>
+        </li>
+        {[
+          ["Maritime & Shipping",     "/industry/maritime"],
+          ["Cargo & Logistics",       "/industry/logistics"],
+          ["Healthcare",              "/industry/healthcare"],
+          ["Laboratories",            "/industry/laboratories"],
+          ["Manufacturing",           "/industry/manufacturing"],
+          ["Oil & Gas",               "/industry/oil-gas"],
+        ].map(([label, to]) => (
+          <li key={label}>
+            <Link to={to} className="text-white/55 hover:text-[var(--color-orange)] transition-colors">{label}</Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="border-t border-white/8 pt-4">
+        <h4 className="font-display font-semibold mb-3 text-[var(--color-teal)] uppercase text-xs tracking-[0.2em]">Resources</h4>
+        <ul className="space-y-2 text-sm">
+          {[
+            ["Knowledge Hub",          "/resources",     false],
+            ["QMS Solutions",          "/qms-solutions", false],
+            ["Standards We Align With","/standards",     false],
+          ].map(([label, to, ext]) => (
+            <li key={label}>
+              <Link to={to as string} className="text-white/65 hover:text-[var(--color-orange)] transition-colors">{label}</Link>
+            </li>
+          ))}
+          <li>
+            <a href={TRAINING_URL} target="_blank" rel="noopener noreferrer"
+              className="text-white/65 hover:text-[var(--color-orange)] transition-colors inline-flex items-center gap-1">
+              Training Portal <ArrowUpRight className="size-3" />
+            </a>
+          </li>
+          <li>
+            <a href={CERT_URL} target="_blank" rel="noopener noreferrer"
+              className="text-white/65 hover:text-[var(--color-orange)] transition-colors inline-flex items-center gap-1">
+              Certification Portal <ArrowUpRight className="size-3" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/* ── Generic link column ── */
+type NavItem = { label: string; to?: string; href?: string };
 
 function FooterCol({ title, items }: { title: string; items: NavItem[] }) {
   return (
@@ -154,6 +246,7 @@ function FooterCol({ title, items }: { title: string; items: NavItem[] }) {
   );
 }
 
+/* ── Contact row helper ── */
 function ContactRow({ icon: Icon, label, children, href }: { icon: typeof MapPin; label: string; children: React.ReactNode; href?: string }) {
   const inner = (
     <div className="flex gap-3 items-start">

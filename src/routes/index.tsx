@@ -39,14 +39,14 @@ const trustBadges = [
 ];
 
 const services = [
-  { icon: Ship,          title: "Marine Inspection & Surveying",  desc: "Independent inspection and technical reporting for marine assets and operations." },
-  { icon: Package,       title: "Cargo Inspection & Surveying",   desc: "Verification of cargo condition, quantity, handling, loading and discharge." },
-  { icon: ClipboardCheck,title: "Vessel Condition Surveys",       desc: "Assessment of condition, operational readiness, safety and compliance status." },
-  { icon: ShieldAlert,   title: "Damage & Loss Assessment",       desc: "Independent assessments for insurers, logistics firms and cargo owners." },
-  { icon: Award,         title: "Quality Assurance & Compliance", desc: "Stronger systems, internal controls, documentation and compliance readiness." },
-  { icon: GraduationCap, title: "Training & Consultancy",         desc: "Practical advisory in inspection, quality management and reporting." },
-  { icon: FileText,      title: "Technical Reporting",            desc: "Clear, structured reports to support decisions, claims and audits." },
-  { icon: Cpu,           title: "QUALIFY QMS Platform",           desc: "Digital quality management for documentation, audits and compliance." },
+  { icon: Ship,          to: "/services/",                               title: "Marine Inspection & Surveying",  desc: "Independent inspection and technical reporting for marine assets and operations." },
+  { icon: Package,       to: "/services/cargo-inspection-surveying",     title: "Cargo Inspection & Surveying",   desc: "Verification of cargo condition, quantity, handling, loading and discharge." },
+  { icon: ClipboardCheck,to: "/services/vessel-condition-surveys",       title: "Vessel Condition Surveys",       desc: "Assessment of condition, operational readiness, safety and compliance status." },
+  { icon: ShieldAlert,   to: "/services/damage-loss-assessment",         title: "Damage & Loss Assessment",       desc: "Independent assessments for insurers, logistics firms and cargo owners." },
+  { icon: Award,         to: "/services/",                               title: "Quality Assurance & Compliance", desc: "Stronger systems, internal controls, documentation and compliance readiness." },
+  { icon: GraduationCap, to: "/services/training-consultancy",           title: "Training & Consultancy",         desc: "Practical advisory in inspection, quality management and reporting." },
+  { icon: FileText,      to: "/services/technical-reporting-documentation", title: "Technical Reporting",         desc: "Clear, structured reports to support decisions, claims and audits." },
+  { icon: Cpu,           to: "/qms-plug",                                title: "QUALIFY QMS Platform",           desc: "Digital quality management for documentation, audits and compliance." },
 ];
 
 const trust = [
@@ -223,7 +223,7 @@ function SplitHero() {
               className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-7 py-3.5 font-semibold shadow-lg hover:opacity-90 hover:shadow-xl transition-all">
               Request Inspection Support <ArrowRight className="size-4" />
             </Link>
-            <Link to="/services"
+            <Link to="/services/"
               className="inline-flex items-center gap-2 rounded-lg bg-white/8 backdrop-blur border border-white/15 text-white px-7 py-3.5 font-semibold hover:bg-white/15 transition-all">
               Explore Services
             </Link>
@@ -375,13 +375,13 @@ function Home() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy">Our Services</h2>
             <p className="mt-3 text-muted-foreground max-w-xl">Independent inspection, technical reporting and quality assurance — delivered professionally and with full accountability.</p>
           </div>
-          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-teal)] hover:underline shrink-0">
+          <Link to="/services/" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-teal)] hover:underline shrink-0">
             View all services <ArrowRight className="size-4" />
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => (
-            <Link key={s.title} to="/services" className="group rounded-2xl bg-card border border-border p-6 shadow-[var(--shadow-card)] hover:border-[var(--color-teal)] hover:shadow-[var(--shadow-elegant)] transition-all">
+            <Link key={s.title} to={s.to as any} className="group rounded-2xl bg-card border border-border p-6 shadow-[var(--shadow-card)] hover:border-[var(--color-teal)] hover:shadow-[var(--shadow-elegant)] transition-all">
               <div className="size-12 rounded-xl bg-gradient-to-br from-[var(--color-ocean)] to-[var(--color-teal)] grid place-items-center text-white mb-4 group-hover:shadow-[0_0_20px_rgba(0,122,138,0.4)] transition-shadow">
                 <s.icon className="size-6" />
               </div>
@@ -484,7 +484,7 @@ function Home() {
               <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-7 py-3.5 font-semibold hover:opacity-90 transition-opacity">
                 Talk to Our Team <ArrowRight className="size-4" />
               </Link>
-              <Link to="/services" className="inline-flex items-center gap-2 rounded-lg bg-white/10 border border-white/20 px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors">
+              <Link to="/services/" className="inline-flex items-center gap-2 rounded-lg bg-white/10 border border-white/20 px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors">
                 View All Services
               </Link>
             </div>
