@@ -14,24 +14,34 @@ const aboutMenu = [
   ["Complaints and Appeals", "/complaints-appeals"],
 ] as const;
 
-const servicesGroups = [
+type ServiceItem = { label: string; url: string; subItems?: [string, string][] };
+
+const servicesGroups: { label: string; link: string; items: ServiceItem[] }[] = [
   {
     label: "Quality Assurance & Compliance",
     link: "/services/quality-assurance",
     items: [
-      ["Certification Support",                "/certification-portal"],
-      ["Training & Consultancy",               "/services/training-consultancy"],
-      ["Technical Reporting & Documentation",  "/services/technical-reporting"],
-    ] as [string, string][],
+      {
+        label: "Certification Support",
+        url: "/certification-portal",
+        subItems: [
+          ["ISO/IEC 17020 — Inspection Bodies",       "/certifications/iso-17020"],
+          ["ISO 15189 — Medical Laboratories",        "/certifications/iso-15189"],
+          ["ISO/IEC 17025 — Testing & Calibration",   "/certifications/iso-17025"],
+        ],
+      },
+      { label: "Training & Consultancy",               url: "/services/training-consultancy" },
+      { label: "Technical Reporting & Documentation",  url: "/services/technical-reporting" },
+    ],
   },
   {
     label: "Marine Inspection & Surveying",
     link: "/services/marine-inspection",
     items: [
-      ["Cargo Inspection & Surveying", "/services/cargo-inspection"],
-      ["Vessel Condition Surveys",     "/services/vessel-surveys"],
-      ["Damage & Loss Assessment",     "/services/damage-loss"],
-    ] as [string, string][],
+      { label: "Cargo Inspection & Surveying", url: "/services/cargo-inspection" },
+      { label: "Vessel Condition Surveys",     url: "/services/vessel-surveys" },
+      { label: "Damage & Loss Assessment",     url: "/services/damage-loss" },
+    ],
   },
 ];
 
@@ -264,14 +274,28 @@ function ServicesDropdown({
                     {g.label} <ChevronRight className="size-3 shrink-0" />
                   </Link>
                   <div className="mt-0.5 space-y-0.5">
-                    {g.items.map(([label, url]) => (
-                      <Link
-                        key={label}
-                        to={url as any}
-                        className="block pl-6 pr-3 py-1.5 text-sm text-white/75 hover:text-white hover:bg-white/8 rounded-md transition-colors"
-                      >
-                        {label}
-                      </Link>
+                    {g.items.map((item) => (
+                      <div key={item.label}>
+                        <Link
+                          to={item.url as any}
+                          className="block pl-6 pr-3 py-1.5 text-sm text-white/75 hover:text-white hover:bg-white/8 rounded-md transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                        {item.subItems && (
+                          <div className="ml-6 mt-0.5 mb-1 space-y-0.5 border-l border-white/10 pl-2">
+                            {item.subItems.map(([subLabel, subUrl]) => (
+                              <Link
+                                key={subLabel}
+                                to={subUrl as any}
+                                className="block px-2 py-1 text-xs text-white/55 hover:text-[var(--color-teal)] hover:bg-white/5 rounded transition-colors"
+                              >
+                                {subLabel}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -340,15 +364,44 @@ function MobileServicesGroup({ onClose }: { onClose: () => void }) {
             >
               {g.label}
             </Link>
-            {g.items.map(([label, url]) => (
-              <Link
-                key={label}
-                to={url as any}
-                onClick={onClose}
-                className="pl-6 pr-3 py-2 text-sm rounded-md hover:bg-white/10 text-white/70 hover:text-white block"
-              >
-                {label}
-              </Link>
+            {g.items.map((item) => (
+              <div key={item.label}>
+                {item.subItems ? (
+                  <details className="rounded-md">
+                    <summary className="pl-6 pr-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-md cursor-pointer list-none flex items-center justify-between">
+                      {item.label}
+                      <ChevronRight className="size-3.5 shrink-0 opacity-50" />
+                    </summary>
+                    <div className="pl-9 flex flex-col border-l border-white/10 ml-6 mt-0.5 mb-1">
+                      <Link
+                        to={item.url as any}
+                        onClick={onClose}
+                        className="px-2 py-1.5 text-xs font-semibold text-[var(--color-teal)] hover:bg-white/8 rounded-md"
+                      >
+                        All Certification Support
+                      </Link>
+                      {item.subItems.map(([subLabel, subUrl]) => (
+                        <Link
+                          key={subLabel}
+                          to={subUrl as any}
+                          onClick={onClose}
+                          className="px-2 py-1.5 text-xs text-white/60 hover:text-white hover:bg-white/8 rounded-md"
+                        >
+                          {subLabel}
+                        </Link>
+                      ))}
+                    </div>
+                  </details>
+                ) : (
+                  <Link
+                    to={item.url as any}
+                    onClick={onClose}
+                    className="pl-6 pr-3 py-2 text-sm rounded-md hover:bg-white/10 text-white/70 hover:text-white block"
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
         ))}
