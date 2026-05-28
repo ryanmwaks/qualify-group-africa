@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
-import { MapPin, Phone, Mail, Clock, MessageCircle, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, ChevronDown, Loader2 } from "lucide-react";
+import { useState, useRef } from "react";
+import { sendContactForm } from "@/lib/emailjs";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -24,7 +25,34 @@ const faqs = [
 ];
 
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("sending");
+    const fd = new FormData(e.currentTarget);
+    try {
+      await sendContactForm({
+        from_name:  fd.get("from_name")  as string,
+        company:    fd.get("company")    as string,
+        phone:      fd.get("phone")      as string,
+        from_email: fd.get("from_email") as string,
+        service:    fd.get("service")    as string,
+        location:   fd.get("location")   as string,
+        urgency:    fd.get("urgency")    as string,
+        details:    fd.get("details")    as string,
+        message:    fd.get("message")    as string,
+      });
+      setStatus("success");
+      formRef.current?.reset();
+    } catch (err) {
+      setErrorMsg("Something went wrong. Please try again or call us directly.");
+      setStatus("error");
+    }
+  };
+
   return (
     <SiteLayout>
       <PageHero eyebrow="Contact" title="Contact QUALIFY Group Africa Ltd" subtitle="Need marine inspection, cargo surveying, quality assurance or technical reporting? Reach out — we'll guide you to the right service." />
@@ -32,7 +60,7 @@ function Contact() {
         {[
           { icon: MapPin, label: "Office", text: "Mombasa, Kenya" },
           { icon: Phone, label: "Phone", text: "+254 723 237 939" },
-          { icon: Mail, label: "Email", text: "info@qualify.co.ke" },
+          { icon: Mail, label: "Email", text: "info@qualifygroup.africa" },
           { icon: Clock, label: "Hours", text: "Mon–Fri, 8AM–5PM" },
         ].map((c) => (
           <div key={c.label} className="rounded-xl bg-card border border-border p-5 flex gap-3">
@@ -47,36 +75,49 @@ function Contact() {
 
       <section className="container-page pb-16 grid lg:grid-cols-5 gap-8">
         <div className="lg:col-span-3 rounded-2xl bg-card border border-border p-6 md:p-8 shadow-[var(--shadow-card)]">
-          <h2 className="font-display text-2xl font-bold text-navy mb-1">Request a Service</h2>
+          <h2 className="font-display text-2xl font-bold text-navy mb-1">Request a Survey</h2>
           <p className="text-sm text-muted-foreground mb-6">We typically respond within one business day.</p>
-          {submitted ? (
-            <div className="rounded-xl bg-[var(--color-success)]/10 border border-[var(--color-success)]/30 p-6 text-center">
-              <div className="font-display text-xl font-bold text-navy">Thank you</div>
+
+          {status === "success" ? (
+            <div className="rounded-xl bg-green-500/10 border border-green-500/30 p-6 text-center">
+              <div className="font-display text-xl font-bold text-navy">Thank you — message sent!</div>
               <p className="text-sm text-muted-foreground mt-2">Our team will review your request and contact you shortly.</p>
+              <button onClick={() => setStatus("idle")} className="mt-4 text-sm text-[var(--color-teal)] underline">Send another request</button>
             </div>
           ) : (
-            <form className="grid sm:grid-cols-2 gap-4" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-              <Field label="Full Name" required><input required className={inp} /></Field>
-              <Field label="Company Name"><input className={inp} /></Field>
-              <Field label="Phone Number" required><input required type="tel" className={inp} /></Field>
-              <Field label="Email Address" required><input required type="email" className={inp} /></Field>
-              <Field label="Service Required">
-                <select className={inp} defaultValue="">
+            <form ref={formRef} className="grid sm:grid-cols-2 gap-4" onSubmit={handleSubmit}>
+              <Field label="Full Name" name="from_name" required><input name="from_name" required className={inp} /></Field>
+              <Field label="Company Name" name="company"><input name="company" className={inp} /></Field>
+              <Field label="Phone Number" name="phone" required><input name="phone" required type="tel" className={inp} /></Field>
+              <Field label="Email Address" name="from_email" required><input name="from_email" required type="email" className={inp} /></Field>
+              <Field label="Service Required" name="service">
+                <select name="service" className={inp} defaultValue="">
                   <option value="" disabled>Select a service…</option>
                   {["Marine Inspection", "Cargo Surveying", "Vessel Condition Survey", "Damage Assessment", "Quality Assurance", "Training", "QMS Platform Demo", "Other"].map((s) => <option key={s}>{s}</option>)}
                 </select>
               </Field>
-              <Field label="Location"><input className={inp} placeholder="Port / city" /></Field>
-              <Field label="Urgency">
-                <select className={inp} defaultValue="Normal">
+              <Field label="Location" name="location"><input name="location" className={inp} placeholder="Port / city" /></Field>
+              <Field label="Urgency" name="urgency">
+                <select name="urgency" className={inp} defaultValue="Normal">
                   {["Normal", "Urgent", "Same Day", "Scheduled Assignment"].map((s) => <option key={s}>{s}</option>)}
                 </select>
               </Field>
-              <Field label="File Upload"><input type="file" className="text-sm" /></Field>
-              <Field label="Vessel / Cargo / Project Details" full><textarea rows={3} className={inp} /></Field>
-              <Field label="Message" full><textarea rows={3} className={inp} /></Field>
+              <Field label="File Upload" name="file"><input type="file" className="text-sm" /></Field>
+              <Field label="Vessel / Cargo / Project Details" name="details" full><textarea name="details" rows={3} className={inp} /></Field>
+              <Field label="Message" name="message" full><textarea name="message" rows={3} className={inp} /></Field>
+
+              {status === "error" && (
+                <p className="sm:col-span-2 text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg p-3">{errorMsg}</p>
+              )}
+
               <div className="sm:col-span-2">
-                <button type="submit" className="w-full sm:w-auto inline-flex justify-center items-center rounded-md bg-[var(--color-orange)] text-orange-foreground px-6 py-3 font-semibold">Send Request</button>
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md bg-[var(--color-orange)] text-orange-foreground px-6 py-3 font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {status === "sending" ? <><Loader2 className="size-4 animate-spin" /> Sending…</> : "Send Request"}
+                </button>
               </div>
             </form>
           )}
