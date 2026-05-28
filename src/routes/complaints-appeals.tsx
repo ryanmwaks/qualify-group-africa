@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
 import { useState } from "react";
 import { z } from "zod";
-import { Send, Lock, Clock, RefreshCw, ArrowUpCircle, CheckCircle2 } from "lucide-react";
+import { Send, Lock, Clock, RefreshCw, ArrowUpCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { sendComplaintForm } from "@/lib/emailjs";
 
 export const Route = createFileRoute("/complaints-appeals")({
   head: () => ({
@@ -36,10 +37,11 @@ const handling = [
 ];
 
 function ComplaintsAppeals() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sendError, setSendError] = useState("");
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const data = Object.fromEntries(fd.entries());
@@ -51,7 +53,24 @@ function ComplaintsAppeals() {
       return;
     }
     setErrors({});
-    setSubmitted(true);
+    setStatus("sending");
+    try {
+      await sendComplaintForm({
+        from_name:      parsed.data.fullName,
+        organization:   parsed.data.organization ?? "",
+        from_email:     parsed.data.email,
+        phone:          parsed.data.phone ?? "",
+        type:           parsed.data.type,
+        service_area:   parsed.data.serviceArea ?? "",
+        reference:      parsed.data.reference ?? "",
+        description:    parsed.data.description,
+        contact_method: parsed.data.contactMethod,
+      });
+      setStatus("success");
+    } catch {
+      setSendError("Failed to send. Please try again or contact us directly.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -91,11 +110,12 @@ function ComplaintsAppeals() {
         </div>
 
         <div className="lg:col-span-2">
-          {submitted ? (
+          {status === "success" ? (
             <div className="rounded-2xl bg-card border border-border p-10 text-center">
               <CheckCircle2 className="size-12 mx-auto text-[var(--color-teal)]" />
               <h2 className="mt-4 font-display text-2xl font-bold text-navy">Submission received</h2>
               <p className="mt-2 text-muted-foreground">Thank you. Our quality team will acknowledge your submission within 3 working days.</p>
+              <button onClick={() => setStatus("idle")} className="mt-4 text-sm text-[var(--color-teal)] underline">Submit another</button>
             </div>
           ) : (
             <form onSubmit={onSubmit} className="rounded-2xl bg-card border border-border p-6 md:p-8 grid gap-4">
@@ -121,8 +141,19 @@ function ComplaintsAppeals() {
                 <input type="file" name="document" className="w-full text-sm" />
               </div>
               <SelectField label="Preferred Contact Method" name="contactMethod" error={errors.contactMethod} options={["Email", "Phone", "WhatsApp"]} required />
-              <button type="submit" className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-[var(--color-orange)] text-orange-foreground px-6 py-3 font-semibold">
-                <Send className="size-4" /> Submit Complaint / Appeal
+
+              {status === "error" && (
+                <p className="text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg p-3">{sendError}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-[var(--color-orange)] text-orange-foreground px-6 py-3 font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === "sending"
+                  ? <><Loader2 className="size-4 animate-spin" /> Sending…</>
+                  : <><Send className="size-4" /> Submit Complaint / Appeal</>}
               </button>
             </form>
           )}
