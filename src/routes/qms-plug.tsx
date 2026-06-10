@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { FileText, ClipboardCheck, AlertTriangle, GitBranch, ShieldCheck, BarChart3, Users, GraduationCap, TrendingUp, ArrowRight, CheckCircle2, Zap, Globe, Cpu, Award, BookOpen, BadgeCheck, ExternalLink } from "lucide-react";
+import { FileText, ClipboardCheck, AlertTriangle, GitBranch, ShieldCheck, BarChart3, Users, GraduationCap, TrendingUp, ArrowRight, CheckCircle2, Zap, Globe, Cpu } from "lucide-react";
 import qmsImg from "@/assets/qms-mockup.jpg";
 import inspectorImg from "@/assets/inspector.jpg";
+
+const CERT_URL = "https://quality.qualify.co.ke";
 
 export const Route = createFileRoute("/qms-plug")({
   head: () => ({
@@ -208,66 +210,51 @@ function QMSPage() {
         </div>
       </section>
 
-      {/* Certification Portal */}
-      <section className="py-20" style={{ background: "var(--gradient-accent)" }}>
-        <div className="container-page">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-[0.15em] uppercase text-white/80">
-                <Award className="size-3.5" /> Certification Portal
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight">
-                Manage Your Certifications in One Place
-              </h2>
-              <p className="text-white/70 leading-relaxed text-lg">
-                Access and manage your ISO certification journey through the QUALIFY Certification Portal — track readiness, submit documentation, monitor audit schedules and receive your certification status updates in real time.
+      {/* Certification management */}
+      <section className="container-page pb-20">
+        <div className="rounded-2xl bg-card border border-border shadow-[var(--shadow-card)] overflow-hidden">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="p-8 md:p-10">
+              <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-3">Certification Management</div>
+              <h2 className="font-display text-3xl font-bold text-navy mb-4">Manage Your Certifications in One Place</h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Keep certification records, audit evidence, renewal schedules and readiness actions visible in one managed quality environment. This restores the original certification-management pathway while keeping portal access away from the main menu.
               </p>
-              <ul className="space-y-3">
-                {[
-                  ["Certification readiness tracking against ISO clauses", BadgeCheck],
-                  ["Document submission and review workflows", FileText],
-                  ["Audit scheduling and outcome recording", ClipboardCheck],
-                  ["Real-time certification status dashboard", BarChart3],
-                  ["Multi-standard support: ISO 9001, 14001, 45001, 22000", BookOpen],
-                ].map(([text, Icon]) => (
-                  <li key={text as string} className="flex items-start gap-3 text-sm">
-                    <Icon className="size-4 text-white/60 shrink-0 mt-0.5" />
-                    <span className="text-white/75">{text as string}</span>
-                  </li>
+              <div className="grid sm:grid-cols-2 gap-3 mb-7">
+                {["Certification status tracking", "Audit evidence library", "Renewal and surveillance reminders", "Corrective action visibility"].map((item) => (
+                  <div key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <CheckCircle2 className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />
+                    {item}
+                  </div>
                 ))}
-              </ul>
-              <div className="flex flex-wrap gap-3 pt-2">
+              </div>
+              <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://quality.qualify.co.ke"
+                  href={CERT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-white text-navy px-7 py-3.5 font-semibold hover:bg-white/90 transition-opacity"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-navy)] text-white px-5 py-2.5 text-sm font-semibold hover:bg-[var(--color-ocean)] transition-colors"
                 >
-                  Access Certification Portal <ExternalLink className="size-4" />
+                  Access Certification Portal <ArrowRight className="size-4" />
                 </a>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg bg-white/10 border border-white/25 text-white px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-navy hover:bg-muted transition-colors"
                 >
                   Request Access
                 </Link>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: BadgeCheck, label: "ISO 9001", desc: "Quality Management", color: "var(--color-teal)" },
-                { icon: ShieldCheck, label: "ISO 14001", desc: "Environmental Management", color: "var(--color-ocean)" },
-                { icon: Users, label: "ISO 45001", desc: "Health & Safety", color: "var(--color-orange)" },
-                { icon: Globe, label: "ISO 22000", desc: "Food Safety", color: "var(--color-teal)" },
-              ].map((c) => (
-                <div key={c.label} className="glass-card-dark rounded-2xl p-5 border border-white/10 hover:border-white/25 transition-all">
-                  <div className="size-10 rounded-lg grid place-items-center mb-3" style={{ background: `${c.color}30` }}>
-                    <c.icon className="size-5" style={{ color: c.color }} />
-                  </div>
-                  <div className="font-display font-bold text-white text-lg">{c.label}</div>
-                  <div className="text-xs text-white/50 mt-1">{c.desc}</div>
+            <div className="bg-navy p-8 md:p-10 text-white flex items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-teal)] mb-5">
+                  <Globe className="size-3.5" /> Online Portal
                 </div>
-              ))}
+                <h3 className="font-display text-2xl font-bold mb-3">Portal access follows the service journey.</h3>
+                <p className="text-white/65 leading-relaxed">
+                  Clients can first understand the relevant service, then continue to the right platform when access, demo or certification tracking is needed.
+                </p>
+              </div>
             </div>
           </div>
         </div>

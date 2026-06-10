@@ -3,7 +3,8 @@ import { Mail, Phone, MapPin, Clock, Linkedin, Facebook, Twitter, ArrowUpRight, 
 import qualifyLogo from "@/assets/qualify-logo.png";
 
 const TRAINING_URL = "https://training.qualify.co.ke";
-const CERT_URL     = "https://quality.qualify.co.ke";
+const QMS_PORTAL_URL = "https://quality.qualify.co.ke";
+const QMS_DEMO_URL   = "https://qms.mlglobtech.com/login";
 const WA_URL       = "https://api.whatsapp.com/send?phone=254723237939";
 
 const company = [
@@ -19,20 +20,21 @@ const company = [
 const services = [
   { label: "Marine Inspection & Surveying",       to: "/services/marine-inspection" },
   { label: "Cargo Inspection & Surveying",        to: "/services/cargo-inspection" },
-  { label: "Vessel Condition Surveys",            to: "/services/vessel-surveys" },
-  { label: "Damage & Loss Assessment",            to: "/services/damage-loss" },
+  { label: "Condition Surveys",                   to: "/services/condition-surveys" },
   { label: "Quality Assurance & Compliance",      to: "/services/quality-assurance" },
+  { label: "Accreditation Support",               to: "/services/accreditation-support" },
+  { label: "Certification Support",               to: "/services/certification-support" },
+  { label: "Quality Management Portal",           to: "/services/quality-system-implementation" },
   { label: "Technical Reporting & Documentation", to: "/services/technical-reporting" },
-  { label: "QMS Solutions",                       to: "/qms-plug" },
 ];
 
 const platforms = [
-  { label: "QMS Solutions",          to: "/qms-plug" },
-  { label: "Training Portal",        href: TRAINING_URL },
-  { label: "Certification Portal",   href: CERT_URL },
-  { label: "Resources",              to: "/resources" },
-  { label: "Downloads",              to: "/resources" },
-  { label: "FAQs",                   to: "/contact" },
+  { label: "Quality Management Portal", href: QMS_PORTAL_URL },
+  { label: "QMS Live Demo",              href: QMS_DEMO_URL },
+  { label: "Training Portal",      href: TRAINING_URL },
+  { label: "Knowledge Hub",        to: "/knowledge-hub" },
+  { label: "Downloads",            to: "/knowledge-hub" },
+  { label: "FAQs",                 to: "/contact" },
 ];
 
 type NavItem = { label: string; to?: string; href?: string };
@@ -90,8 +92,8 @@ export function Footer() {
         {/* Col 3: Services */}
         <FooterCol title="Services" items={services} />
 
-        {/* Col 4: Platforms & Resources */}
-        <FooterCol title="Platforms & Resources" items={platforms} />
+        {/* Col 4: Platforms */}
+        <FooterCol title="Platforms" items={platforms} />
 
         {/* Col 5: Contact */}
         <div>
@@ -99,7 +101,7 @@ export function Footer() {
           <div className="space-y-4">
             <ContactRow icon={MapPin} label="Office">Mombasa, Kenya</ContactRow>
             <ContactRow icon={Phone}  label="Phone" href="tel:+254723237939">+254 723 237 939</ContactRow>
-            <ContactRow icon={Mail}   label="Email" href="mailto:info@qualifygroup.africa">info@qualifygroup.africa</ContactRow>
+            <ContactRow icon={Mail}   label="Email" href="mailto:info@qualify.co.ke">info@qualify.co.ke</ContactRow>
             <ContactRow icon={Clock}  label="Hours">Mon–Fri · 8:00 AM – 5:00 PM EAT</ContactRow>
           </div>
           <div className="mt-5">

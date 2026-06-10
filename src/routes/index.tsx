@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import qmsImg from "@/assets/qms-mockup.jpg";
 import inspectorImg from "@/assets/inspector.jpg";
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-/* ─── DATA ────────────────────────────────────────────────────── */
+/* â”€â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 const stats = [
   { value: "15+", label: "Years Experience" },
@@ -39,14 +39,14 @@ const trustBadges = [
 ];
 
 const services = [
-  { icon: Ship,          to: "/services/",                               title: "Marine Inspection & Surveying",  desc: "Independent inspection and technical reporting for marine assets and operations." },
-  { icon: Package,       to: "/services/cargo-inspection-surveying",     title: "Cargo Inspection & Surveying",   desc: "Verification of cargo condition, quantity, handling, loading and discharge." },
-  { icon: ClipboardCheck,to: "/services/vessel-condition-surveys",       title: "Vessel Condition Surveys",       desc: "Assessment of condition, operational readiness, safety and compliance status." },
-  { icon: ShieldAlert,   to: "/services/damage-loss-assessment",         title: "Damage & Loss Assessment",       desc: "Independent assessments for insurers, logistics firms and cargo owners." },
-  { icon: Award,         to: "/services/",                               title: "Quality Assurance & Compliance", desc: "Stronger systems, internal controls, documentation and compliance readiness." },
-  { icon: GraduationCap, to: "/services/training-consultancy",           title: "Training & Consultancy",         desc: "Practical advisory in inspection, quality management and reporting." },
-  { icon: FileText,      to: "/services/technical-reporting-documentation", title: "Technical Reporting",         desc: "Clear, structured reports to support decisions, claims and audits." },
-  { icon: Cpu,           to: "/qms-plug",                                title: "QUALIFY QMS Platform",           desc: "Digital quality management for documentation, audits and compliance." },
+  { icon: Ship,          title: "Marine Inspection & Surveying",  desc: "Independent inspection and technical reporting for marine assets and operations." },
+  { icon: Package,       title: "Cargo Inspection & Surveying",   desc: "Verification of cargo condition, quantity, handling, loading and discharge." },
+  { icon: ClipboardCheck,title: "Vessel Condition Surveys",       desc: "Assessment of condition, operational readiness, safety and compliance status." },
+  { icon: ShieldAlert,   title: "Damage & Loss Assessment",       desc: "Independent assessments for insurers, logistics firms and cargo owners." },
+  { icon: Award,         title: "Quality Assurance & Compliance", desc: "Stronger systems, internal controls, documentation and compliance readiness." },
+  { icon: GraduationCap, title: "Training & Consultancy",         desc: "Practical advisory in inspection, quality management and reporting." },
+  { icon: FileText,      title: "Technical Reporting",            desc: "Clear, structured reports to support decisions, claims and audits." },
+  { icon: Cpu,           title: "QUALIFY QMS Platform",           desc: "Digital quality management for documentation, audits and compliance." },
 ];
 
 const trust = [
@@ -65,12 +65,12 @@ const industries = [
 ];
 
 const process = [
-  { n: "01", title: "Inquiry & Consultation",  desc: "We discuss your assignment, objectives, location and scope — providing clear guidance on the most appropriate service and approach." },
+  { n: "01", title: "Inquiry & Consultation",  desc: "We discuss your assignment, objectives, location and scope â€” providing clear guidance on the most appropriate service and approach." },
   { n: "02", title: "Assessment & Planning",   desc: "We define the scope, assign the right technical resource, and agree timelines and deliverables upfront." },
   { n: "03", title: "Inspection & Delivery",   desc: "Our surveyor or advisor attends on-site, conducts a systematic assessment, gathers evidence and documents all findings." },
-  { n: "04", title: "Technical Reporting",     desc: "Structured reports are issued within the agreed turnaround — factual, defensible, and formatted for the intended audience." },
+  { n: "04", title: "Technical Reporting",     desc: "Structured reports are issued within the agreed turnaround â€” factual, defensible, and formatted for the intended audience." },
   { n: "05", title: "Corrective Actions",      desc: "Where findings require resolution, we support root-cause analysis, corrective action planning and implementation tracking." },
-  { n: "06", title: "Follow-Up & Improvement", desc: "Post-assignment advisory to ensure findings lead to lasting improvement — not just a report on a shelf." },
+  { n: "06", title: "Follow-Up & Improvement", desc: "Post-assignment advisory to ensure findings lead to lasting improvement â€” not just a report on a shelf." },
 ];
 
 const caseStudies = [
@@ -86,13 +86,13 @@ const articles = [
   { tag: "QMS",    cat: "QMS",         title: "Benefits of a digital quality management system",     excerpt: "How digital QMS unlocks faster audits and clearer accountability." },
 ];
 
-/* ─── PORT CAROUSEL ───────────────────────────────────────────── */
+/* â”€â”€â”€ PORT CAROUSEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 const portSlides = [
-  { img: portMombasaImg,  location: "Port of Mombasa, Kenya",    tag: "East Africa's Primary Maritime Hub",    flag: "🇰🇪" },
-  { img: portDjiboutiImg, location: "Port of Djibouti",          tag: "Strategic Red Sea & Gulf of Aden Gateway", flag: "🇩🇯" },
-  { img: portLamuImg,     location: "Port of Lamu, Kenya",       tag: "LAPSSET Corridor Deep-Water Terminal",  flag: "🇰🇪" },
-  { img: portTangaImg,    location: "Port of Tanga, Tanzania",   tag: "Northern Tanzania Cargo Terminal",      flag: "🇹🇿" },
+  { img: portMombasaImg,  location: "Port of Mombasa, Kenya",    tag: "East Africa's Primary Maritime Hub",    flag: "ðŸ‡°ðŸ‡ª" },
+  { img: portDjiboutiImg, location: "Port of Djibouti",          tag: "Strategic Red Sea & Gulf of Aden Gateway", flag: "ðŸ‡©ðŸ‡¯" },
+  { img: portLamuImg,     location: "Port of Lamu, Kenya",       tag: "LAPSSET Corridor Deep-Water Terminal",  flag: "ðŸ‡°ðŸ‡ª" },
+  { img: portTangaImg,    location: "Port of Tanga, Tanzania",   tag: "Northern Tanzania Cargo Terminal",      flag: "ðŸ‡¹ðŸ‡¿" },
 ];
 
 function PortCarousel() {
@@ -195,12 +195,12 @@ function SplitHero() {
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur text-xs font-semibold tracking-wider uppercase text-[var(--color-teal)] border border-white/10">
             <span className="size-2 rounded-full bg-[var(--color-orange)] animate-pulse" />
-            Independent · Marine · Cargo · Quality
+            Independent. Quality. Marine. Cargo
           </div>
 
           <h1 className="font-display text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.05] text-white">
-            Independent Marine, Cargo &amp;{" "}
-            <span className="text-gradient-navy">Quality Inspection</span>{" "}
+            Independent <span className="text-gradient-navy">Quality Inspection</span>,{" "}
+            Marine &amp; Cargo{" "}
             Experts in Kenya
           </h1>
 
@@ -223,7 +223,7 @@ function SplitHero() {
               className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-7 py-3.5 font-semibold shadow-lg hover:opacity-90 hover:shadow-xl transition-all">
               Request Inspection Support <ArrowRight className="size-4" />
             </Link>
-            <Link to="/services/"
+            <Link to="/services"
               className="inline-flex items-center gap-2 rounded-lg bg-white/8 backdrop-blur border border-white/15 text-white px-7 py-3.5 font-semibold hover:bg-white/15 transition-all">
               Explore Services
             </Link>
@@ -240,7 +240,7 @@ function SplitHero() {
           </div>
         </div>
 
-        {/* RIGHT — port image carousel */}
+        {/* RIGHT â€” port image carousel */}
         <div className="relative hidden lg:block">
           <PortCarousel />
         </div>
@@ -249,7 +249,7 @@ function SplitHero() {
   );
 }
 
-/* ─── HOW WE WORK ─────────────────────────────────────────────── */
+/* â”€â”€â”€ HOW WE WORK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 function HowWeWork() {
   return (
@@ -259,7 +259,7 @@ function HowWeWork() {
         <div className="text-center mb-14">
           <div className="inline-block text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-3 px-3 py-1 rounded-full bg-white/8 border border-white/10">Our Process</div>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white">How We Work</h2>
-          <p className="mt-4 text-white/65 max-w-xl mx-auto">A structured, consistent approach — from the first call to the final report and beyond.</p>
+          <p className="mt-4 text-white/65 max-w-xl mx-auto">A structured, consistent approach â€” from the first call to the final report and beyond.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {process.map((p) => (
@@ -280,7 +280,7 @@ function HowWeWork() {
   );
 }
 
-/* ─── CASE STUDIES ────────────────────────────────────────────── */
+/* â”€â”€â”€ CASE STUDIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 function CaseStudies() {
   return (
@@ -315,7 +315,7 @@ function CaseStudies() {
   );
 }
 
-/* ─── HOME ────────────────────────────────────────────────────── */
+/* â”€â”€â”€ HOME â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 function Home() {
   return (
@@ -328,7 +328,7 @@ function Home() {
         <div className="flex">
           {portSlides.map((p, i) => (
             <div key={p.location} className="relative flex-1 h-24 overflow-hidden group">
-              <img src={p.img} alt={p.location} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src={p.img} alt={p.location} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-black/55 group-hover:bg-black/35 transition-colors duration-300" />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-2">
                 <span className="text-lg leading-none mb-0.5">{p.flag}</span>
@@ -373,15 +373,15 @@ function Home() {
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold mb-3">What We Do</div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy">Our Services</h2>
-            <p className="mt-3 text-muted-foreground max-w-xl">Independent inspection, technical reporting and quality assurance — delivered professionally and with full accountability.</p>
+            <p className="mt-3 text-muted-foreground max-w-xl">Independent inspection, technical reporting and quality assurance â€” delivered professionally and with full accountability.</p>
           </div>
-          <Link to="/services/" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-teal)] hover:underline shrink-0">
+          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-teal)] hover:underline shrink-0">
             View all services <ArrowRight className="size-4" />
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => (
-            <Link key={s.title} to={s.to as any} className="group rounded-2xl bg-card border border-border p-6 shadow-[var(--shadow-card)] hover:border-[var(--color-teal)] hover:shadow-[var(--shadow-elegant)] transition-all">
+            <Link key={s.title} to="/services" className="group rounded-2xl bg-card border border-border p-6 shadow-[var(--shadow-card)] hover:border-[var(--color-teal)] hover:shadow-[var(--shadow-elegant)] transition-all">
               <div className="size-12 rounded-xl bg-gradient-to-br from-[var(--color-ocean)] to-[var(--color-teal)] grid place-items-center text-white mb-4 group-hover:shadow-[0_0_20px_rgba(0,122,138,0.4)] transition-shadow">
                 <s.icon className="size-6" />
               </div>
@@ -424,7 +424,7 @@ function Home() {
           <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-teal)] font-bold">Digital Platform</div>
           <h2 className="font-display text-3xl font-bold text-navy">QUALIFY QMS Platform</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Replace paper-based quality management with a structured, cloud-based digital system covering documentation, audits, CAPA, compliance monitoring and training records — implemented and supported by the QUALIFY team.
+            Replace paper-based quality management with a structured, cloud-based digital system covering documentation, audits, CAPA, compliance monitoring and training records â€” implemented and supported by the QUALIFY team.
           </p>
           <ul className="space-y-2">
             {["Document control and version management", "Internal audit scheduling and tracking", "Corrective and preventive action (CAPA)", "Compliance monitoring dashboards", "Training records and competence tracking"].map((f) => (
@@ -454,7 +454,7 @@ function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {articles.map((a) => (
-              <Link key={a.title} to="/resources" className="group rounded-2xl bg-card border border-border p-6 hover:border-[var(--color-teal)] hover:shadow-[var(--shadow-card)] transition-all">
+              <Link key={a.title} to="/knowledge-hub" className="group rounded-2xl bg-card border border-border p-6 hover:border-[var(--color-teal)] hover:shadow-[var(--shadow-card)] transition-all">
                 <div className="inline-block text-xs font-bold uppercase tracking-wider text-[var(--color-orange)] mb-3">{a.tag}</div>
                 <h3 className="font-display font-bold text-navy mb-2 group-hover:text-[var(--color-teal)] transition-colors">{a.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{a.excerpt}</p>
@@ -465,7 +465,7 @@ function Home() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <Link to="/resources" className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 font-semibold text-navy hover:bg-muted transition-colors">
+            <Link to="/knowledge-hub" className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 font-semibold text-navy hover:bg-muted transition-colors">
               Visit Knowledge Hub <ArrowRight className="size-4" />
             </Link>
           </div>
@@ -479,12 +479,12 @@ function Home() {
           <div className="absolute -left-10 bottom-0 size-48 rounded-full bg-[var(--color-teal)]/15 blur-3xl" />
           <div className="relative max-w-2xl">
             <h3 className="font-display text-2xl md:text-3xl font-bold">Not sure which service you need?</h3>
-            <p className="mt-3 text-white/70 leading-relaxed">Describe your situation and our technical team will identify the most appropriate service and engagement approach — at no obligation.</p>
+            <p className="mt-3 text-white/70 leading-relaxed">Describe your situation and our technical team will identify the most appropriate service and engagement approach â€” at no obligation.</p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-orange)] text-white px-7 py-3.5 font-semibold hover:opacity-90 transition-opacity">
                 Talk to Our Team <ArrowRight className="size-4" />
               </Link>
-              <Link to="/services/" className="inline-flex items-center gap-2 rounded-lg bg-white/10 border border-white/20 px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors">
+              <Link to="/services" className="inline-flex items-center gap-2 rounded-lg bg-white/10 border border-white/20 px-7 py-3.5 font-semibold hover:bg-white/20 transition-colors">
                 View All Services
               </Link>
             </div>

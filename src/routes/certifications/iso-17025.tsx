@@ -181,12 +181,12 @@ const deliverables = [
 
 function Iso17025Page() {
   return (
-    <SiteLayout>
+    <SiteLayout className="accreditation-theme">
       <PageHero
         eyebrow="ISO/IEC 17025 · Testing & Calibration Laboratories"
         title="Accreditation Readiness for Testing & Calibration Laboratories"
         subtitle="For laboratories demonstrating technical competence and metrological traceability — chemical, environmental, food, construction materials, electrical and calibration testing, recognised internationally through ILAC mutual recognition."
-        variant="port"
+        variant="cert-iso-17025"
       />
 
       {/* Stats strip */}
@@ -202,7 +202,9 @@ function Iso17025Page() {
       </div>
 
       {/* Intro */}
-      <section className="container-page py-16 max-w-5xl">
+      <section className="py-16 relative overflow-hidden" style={{ background: "rgba(6,43,79,0.22)" }}>
+        <div className="absolute top-0 right-0 size-96 rounded-full bg-[var(--color-teal)]/8 blur-3xl pointer-events-none" />
+        <div className="container-page relative">
         <div className="grid md:grid-cols-[3fr_2fr] gap-10 items-start">
           <div>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-5">What is ISO/IEC 17025?</h2>
@@ -253,6 +255,7 @@ function Iso17025Page() {
             </ul>
           </div>
         </div>
+        </div>
       </section>
 
       {/* Why It Matters */}
@@ -286,30 +289,33 @@ function Iso17025Page() {
       </section>
 
       {/* Key Technical Concepts */}
-      <section className="container-page py-16">
-        <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">Three Technical Concepts That Define 17025</h2>
-        <p className="text-white/55 text-center mb-10 text-sm max-w-2xl mx-auto">
-          These requirements are technically specific to ISO/IEC 17025 — they go beyond what a general quality management system requires
-        </p>
-        <div className="grid md:grid-cols-3 gap-5">
-          {keyConcepts.map(({ icon: Icon, concept, title, desc, items }) => (
-            <div key={concept} className="rounded-2xl border border-white/10 p-6" style={{ background: "rgba(6,43,79,0.5)" }}>
-              <div className="grid place-items-center size-12 rounded-xl bg-[var(--color-teal)]/20 border border-[var(--color-teal)]/30 mb-4">
-                <Icon className="size-6 text-[var(--color-teal)]" />
+      <section className="py-16 relative overflow-hidden" style={{ background: "rgba(6,43,79,0.50)" }}>
+        <div className="absolute bottom-0 right-1/4 size-80 rounded-full bg-[var(--color-ocean)]/8 blur-3xl pointer-events-none" />
+        <div className="container-page relative">
+          <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">Three Technical Concepts That Define 17025</h2>
+          <p className="text-white/55 text-center mb-10 text-sm max-w-2xl mx-auto">
+            These requirements are technically specific to ISO/IEC 17025 — they go beyond what a general quality management system requires
+          </p>
+          <div className="grid md:grid-cols-3 gap-5">
+            {keyConcepts.map(({ icon: Icon, concept, title, desc, items }) => (
+              <div key={concept} className="rounded-2xl border border-white/10 p-6" style={{ background: "rgba(6,43,79,0.6)" }}>
+                <div className="grid place-items-center size-12 rounded-xl bg-[var(--color-teal)]/20 border border-[var(--color-teal)]/30 mb-4">
+                  <Icon className="size-6 text-[var(--color-teal)]" />
+                </div>
+                <div className="text-xs font-bold text-[var(--color-teal)] uppercase tracking-widest mb-1">{concept}</div>
+                <h3 className="font-display font-semibold text-white text-lg mb-3">{title}</h3>
+                <p className="text-sm text-white/65 leading-relaxed mb-4">{desc}</p>
+                <div className="border-t border-white/8 pt-4 space-y-2">
+                  {items.map((item) => (
+                    <div key={item} className="flex items-start gap-2 text-xs text-white/55">
+                      <CheckCircle2 className="size-3.5 text-[var(--color-teal)] shrink-0 mt-0.5" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="text-xs font-bold text-[var(--color-teal)] uppercase tracking-widest mb-1">{concept}</div>
-              <h3 className="font-display font-semibold text-white text-lg mb-3">{title}</h3>
-              <p className="text-sm text-white/65 leading-relaxed mb-4">{desc}</p>
-              <div className="border-t border-white/8 pt-4 space-y-2">
-                {items.map((item) => (
-                  <div key={item} className="flex items-start gap-2 text-xs text-white/55">
-                    <CheckCircle2 className="size-3.5 text-[var(--color-teal)] shrink-0 mt-0.5" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -337,7 +343,7 @@ function Iso17025Page() {
       </section>
 
       {/* Requirements */}
-      <section className="py-16" style={{ background: "transparent" }}>
+      <section className="py-16" style={{ background: "linear-gradient(180deg, rgba(6,43,79,0.55) 0%, rgba(4,24,48,0.15) 100%)" }}>
         <div className="container-page">
           <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">Standard Requirements — Clause by Clause</h2>
           <p className="text-white/55 text-center mb-10 text-sm">The five principal clause areas your laboratory quality system must satisfy</p>
@@ -358,22 +364,26 @@ function Iso17025Page() {
       </section>
 
       {/* Journey */}
-      <section className="container-page py-16">
-        <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">Our Readiness Journey</h2>
-        <p className="text-white/55 text-center mb-10 text-sm">How QUALIFY guides your laboratory from current state to KENAS accreditation-ready</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {journey.map(({ n, icon: Icon, title, desc }) => (
-            <div key={n} className="rounded-xl border border-white/10 p-5" style={{ background: "rgba(6,43,79,0.4)" }}>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="grid place-items-center size-9 rounded-lg bg-[var(--color-teal)]/20 border border-[var(--color-teal)]/30 shrink-0">
-                  <Icon className="size-4 text-[var(--color-teal)]" />
+      <section className="py-16 relative overflow-hidden" style={{ background: "rgba(10,111,174,0.08)" }}>
+        <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-[var(--color-ocean)]/6 blur-3xl pointer-events-none" />
+        <div className="container-page relative">
+          <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">Our Readiness Journey</h2>
+          <p className="text-white/55 text-center mb-10 text-sm">How QUALIFY guides your laboratory from current state to KENAS accreditation-ready</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {journey.map(({ n, icon: Icon, title, desc }) => (
+              <div key={n} className="rounded-xl border border-white/10 p-5" style={{ background: "rgba(6,43,79,0.5)" }}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="grid place-items-center size-9 rounded-lg bg-[var(--color-teal)]/20 border border-[var(--color-teal)]/30 shrink-0">
+                    <Icon className="size-4 text-[var(--color-teal)]" />
+                  </div>
+                  <span className="text-xs font-bold text-[var(--color-teal)] uppercase tracking-widest">Step {n}</span>
                 </div>
-                <span className="text-xs font-bold text-[var(--color-teal)] uppercase tracking-widest">Step {n}</span>
+                <h3 className="font-display font-semibold text-white text-sm mb-2">{title}</h3>
+                <p className="text-xs text-white/60 leading-relaxed">{desc}</p>
               </div>
-              <h3 className="font-display font-semibold text-white text-sm mb-2">{title}</h3>
-              <p className="text-xs text-white/60 leading-relaxed">{desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -406,20 +416,23 @@ function Iso17025Page() {
       </section>
 
       {/* Deliverables */}
-      <section className="container-page py-16 max-w-4xl">
-        <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">What We Deliver</h2>
-        <p className="text-white/55 text-center mb-10 text-sm">Every engagement produces a complete, assessment-ready evidence package</p>
-        <div className="grid sm:grid-cols-2 gap-3">
-          {deliverables.map((d) => (
-            <div
-              key={d}
-              className="flex items-start gap-3 rounded-lg border border-white/8 p-4"
-              style={{ background: "rgba(6,43,79,0.4)" }}
-            >
-              <CheckCircle2 className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />
-              <span className="text-sm text-white/75">{d}</span>
-            </div>
-          ))}
+      <section className="py-16 relative overflow-hidden" style={{ background: "linear-gradient(135deg, rgba(0,122,138,0.12) 0%, rgba(6,43,79,0.45) 100%)" }}>
+        <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        <div className="container-page relative">
+          <h2 className="font-display text-2xl font-bold text-white mb-2 text-center">What We Deliver</h2>
+          <p className="text-white/55 text-center mb-10 text-sm">Every engagement produces a complete, assessment-ready evidence package</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {deliverables.map((d) => (
+              <div
+                key={d}
+                className="flex items-start gap-3 rounded-lg border border-white/8 p-4"
+                style={{ background: "rgba(6,43,79,0.5)" }}
+              >
+                <CheckCircle2 className="size-4 text-[var(--color-teal)] shrink-0 mt-0.5" />
+                <span className="text-sm text-white/75">{d}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

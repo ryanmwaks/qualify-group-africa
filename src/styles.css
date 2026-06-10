@@ -76,6 +76,8 @@
   --gradient-hero: linear-gradient(135deg, oklch(0.18 0.07 250) 0%, oklch(0.28 0.08 249) 50%, oklch(0.4 0.1 220) 100%);
   --gradient-navy: linear-gradient(180deg, var(--navy), oklch(0.22 0.07 250));
   --gradient-accent: linear-gradient(135deg, var(--ocean), var(--teal));
+  --gradient-header: linear-gradient(135deg, oklch(0.18 0.07 250 / 0.96) 0%, oklch(0.24 0.08 249 / 0.94) 48%, oklch(0.33 0.08 225 / 0.92) 100%);
+  --gradient-header-scrolled: linear-gradient(135deg, oklch(0.16 0.06 250 / 0.98) 0%, oklch(0.23 0.08 249 / 0.97) 55%, oklch(0.29 0.08 225 / 0.96) 100%);
   --shadow-card: 0 4px 20px -8px oklch(0.28 0.08 249 / 0.15);
   --shadow-elegant: 0 20px 60px -20px oklch(0.28 0.08 249 / 0.35);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -112,8 +114,59 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
+}
+
+.accreditation-theme main {
+  background:
+    radial-gradient(circle at 85% 8%, rgba(0, 122, 138, 0.16), transparent 28rem),
+    linear-gradient(180deg, #062b4f 0%, #041830 100%);
+  color: white;
+}
+
+.accreditation-theme main > section {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.accreditation-theme main [class*="text-white/35"],
+.accreditation-theme main [class*="text-white/50"],
+.accreditation-theme main [class*="text-white/55"] {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.accreditation-theme main [class*="text-white/60"],
+.accreditation-theme main [class*="text-white/65"],
+.accreditation-theme main [class*="text-white/70"],
+.accreditation-theme main [class*="text-white/75"] {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f7 100%) !important;
+  border-color: var(--color-border);
+  color: var(--color-foreground);
+}
+
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) h2,
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) h3 {
+  color: var(--color-navy);
+}
+
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) p,
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) li,
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) [class*="text-white/"] {
+  color: var(--color-muted-foreground);
+}
+
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) [class*="border-white"] {
+  border-color: var(--color-border);
+}
+
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) article,
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) .rounded-xl,
+.accreditation-theme main > section:nth-of-type(odd):not(:first-of-type):not(:last-of-type) .rounded-2xl {
+  box-shadow: var(--shadow-card);
 }
 
 @utility container-page {
@@ -191,6 +244,48 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes mobileMenuIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleReveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes softShimmer {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+
 @utility tab-panel-enter {
   animation: fadeSlideIn 0.3s ease-out both;
+}
+
+@utility menu-panel-enter {
+  animation: menuIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform-origin: top center;
+}
+
+@utility mobile-menu-enter {
+  animation: mobileMenuIn 0.2s ease-out both;
+}
+
+@utility title-reveal {
+  animation: titleReveal 0.55s ease-out both;
+}
+
+@utility title-shimmer {
+  background: linear-gradient(100deg, #ffffff 0%, #ffffff 35%, #83d6de 55%, #ffffff 78%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: softShimmer 7s ease-in-out infinite alternate;
 }

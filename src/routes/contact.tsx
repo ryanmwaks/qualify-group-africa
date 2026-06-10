@@ -17,7 +17,7 @@ export const Route = createFileRoute("/contact")({
 const faqs = [
   ["What information should I provide when requesting a survey?", "Service required, location, dates, vessel/cargo details and any supporting documents help us respond quickly."],
   ["Do you handle urgent inspection requests?", "Yes — select 'Urgent' or 'Same Day' in the form and our team will prioritize your request."],
-  ["Can I upload supporting documents?", "Yes — the form supports file uploads for B/Ls, certificates, photos and other references."],
+  ["Can I share supporting documents?", "Yes — mention the documents in your message and our team will request the files by email or WhatsApp."],
   ["Do you provide technical reports?", "All assignments include structured technical reports with evidence and recommendations."],
   ["Which sectors do you serve?", "Maritime, cargo, logistics, port operations, insurance, importers/exporters and compliance teams."],
   ["Can I request a QMS Platform demo?", "Yes — choose 'QMS Platform Demo' as the service and we'll schedule a walkthrough."],
@@ -60,7 +60,7 @@ function Contact() {
         {[
           { icon: MapPin, label: "Office", text: "Mombasa, Kenya" },
           { icon: Phone, label: "Phone", text: "+254 723 237 939" },
-          { icon: Mail, label: "Email", text: "info@qualifygroup.africa" },
+          { icon: Mail, label: "Email", text: "info@qualify.co.ke" },
           { icon: Clock, label: "Hours", text: "Mon–Fri, 8AM–5PM" },
         ].map((c) => (
           <div key={c.label} className="rounded-xl bg-card border border-border p-5 flex gap-3">
@@ -102,7 +102,6 @@ function Contact() {
                   {["Normal", "Urgent", "Same Day", "Scheduled Assignment"].map((s) => <option key={s}>{s}</option>)}
                 </select>
               </Field>
-              <Field label="File Upload" name="file"><input type="file" className="text-sm" /></Field>
               <Field label="Vessel / Cargo / Project Details" name="details" full><textarea name="details" rows={3} className={inp} /></Field>
               <Field label="Message" name="message" full><textarea name="message" rows={3} className={inp} /></Field>
 

@@ -17,6 +17,7 @@ import { Route as QualityPolicyRouteImport } from './routes/quality-policy'
 import { Route as QmsPlugRouteImport } from './routes/qms-plug'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as KnowledgeHubRouteImport } from './routes/knowledge-hub'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -26,16 +27,26 @@ import { Route as CertificationPortalRouteImport } from './routes/certification-
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as KnowledgeHubIndexRouteImport } from './routes/knowledge-hub/index'
 import { Route as ServicesVesselSurveysRouteImport } from './routes/services/vessel-surveys'
 import { Route as ServicesTrainingConsultancyRouteImport } from './routes/services/training-consultancy'
 import { Route as ServicesTechnicalReportingRouteImport } from './routes/services/technical-reporting'
+import { Route as ServicesSampleLogisticsRouteImport } from './routes/services/sample-logistics'
+import { Route as ServicesQualitySystemImplementationRouteImport } from './routes/services/quality-system-implementation'
 import { Route as ServicesQualityAssuranceRouteImport } from './routes/services/quality-assurance'
 import { Route as ServicesMarineInspectionRouteImport } from './routes/services/marine-inspection'
 import { Route as ServicesDamageLossRouteImport } from './routes/services/damage-loss'
+import { Route as ServicesConditionSurveysRouteImport } from './routes/services/condition-surveys'
+import { Route as ServicesCertificationSupportRouteImport } from './routes/services/certification-support'
 import { Route as ServicesCargoInspectionRouteImport } from './routes/services/cargo-inspection'
+import { Route as ServicesAuditingRouteImport } from './routes/services/auditing'
+import { Route as ServicesAccreditationSupportRouteImport } from './routes/services/accreditation-support'
+import { Route as KnowledgeHubSlugRouteImport } from './routes/knowledge-hub/$slug'
 import { Route as CertificationsIso17025RouteImport } from './routes/certifications/iso-17025'
 import { Route as CertificationsIso17020RouteImport } from './routes/certifications/iso-17020'
 import { Route as CertificationsIso15189RouteImport } from './routes/certifications/iso-15189'
+import { Route as CertificationsFrameworkRouteImport } from './routes/certifications/$framework'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -75,6 +86,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PartnersRoute = PartnersRouteImport.update({
   id: '/partners',
   path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeHubRoute = KnowledgeHubRouteImport.update({
+  id: '/knowledge-hub',
+  path: '/knowledge-hub',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndustriesRoute = IndustriesRouteImport.update({
@@ -122,6 +138,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const KnowledgeHubIndexRoute = KnowledgeHubIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => KnowledgeHubRoute,
+} as any)
 const ServicesVesselSurveysRoute = ServicesVesselSurveysRouteImport.update({
   id: '/vessel-surveys',
   path: '/vessel-surveys',
@@ -137,6 +163,17 @@ const ServicesTechnicalReportingRoute =
   ServicesTechnicalReportingRouteImport.update({
     id: '/technical-reporting',
     path: '/technical-reporting',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesSampleLogisticsRoute = ServicesSampleLogisticsRouteImport.update({
+  id: '/sample-logistics',
+  path: '/sample-logistics',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesQualitySystemImplementationRoute =
+  ServicesQualitySystemImplementationRouteImport.update({
+    id: '/quality-system-implementation',
+    path: '/quality-system-implementation',
     getParentRoute: () => ServicesRoute,
   } as any)
 const ServicesQualityAssuranceRoute =
@@ -156,10 +193,38 @@ const ServicesDamageLossRoute = ServicesDamageLossRouteImport.update({
   path: '/damage-loss',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesConditionSurveysRoute =
+  ServicesConditionSurveysRouteImport.update({
+    id: '/condition-surveys',
+    path: '/condition-surveys',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesCertificationSupportRoute =
+  ServicesCertificationSupportRouteImport.update({
+    id: '/certification-support',
+    path: '/certification-support',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 const ServicesCargoInspectionRoute = ServicesCargoInspectionRouteImport.update({
   id: '/cargo-inspection',
   path: '/cargo-inspection',
   getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAuditingRoute = ServicesAuditingRouteImport.update({
+  id: '/auditing',
+  path: '/auditing',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAccreditationSupportRoute =
+  ServicesAccreditationSupportRouteImport.update({
+    id: '/accreditation-support',
+    path: '/accreditation-support',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const KnowledgeHubSlugRoute = KnowledgeHubSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => KnowledgeHubRoute,
 } as any)
 const CertificationsIso17025Route = CertificationsIso17025RouteImport.update({
   id: '/certifications/iso-17025',
@@ -176,6 +241,11 @@ const CertificationsIso15189Route = CertificationsIso15189RouteImport.update({
   path: '/certifications/iso-15189',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationsFrameworkRoute = CertificationsFrameworkRouteImport.update({
+  id: '/certifications/$framework',
+  path: '/certifications/$framework',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -187,6 +257,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/history': typeof HistoryRoute
   '/industries': typeof IndustriesRoute
+  '/knowledge-hub': typeof KnowledgeHubRouteWithChildren
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/qms-plug': typeof QmsPlugRoute
@@ -195,16 +266,26 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRouteWithChildren
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/certifications/$framework': typeof CertificationsFrameworkRoute
   '/certifications/iso-15189': typeof CertificationsIso15189Route
   '/certifications/iso-17020': typeof CertificationsIso17020Route
   '/certifications/iso-17025': typeof CertificationsIso17025Route
+  '/knowledge-hub/$slug': typeof KnowledgeHubSlugRoute
+  '/services/accreditation-support': typeof ServicesAccreditationSupportRoute
+  '/services/auditing': typeof ServicesAuditingRoute
   '/services/cargo-inspection': typeof ServicesCargoInspectionRoute
+  '/services/certification-support': typeof ServicesCertificationSupportRoute
+  '/services/condition-surveys': typeof ServicesConditionSurveysRoute
   '/services/damage-loss': typeof ServicesDamageLossRoute
   '/services/marine-inspection': typeof ServicesMarineInspectionRoute
   '/services/quality-assurance': typeof ServicesQualityAssuranceRoute
+  '/services/quality-system-implementation': typeof ServicesQualitySystemImplementationRoute
+  '/services/sample-logistics': typeof ServicesSampleLogisticsRoute
   '/services/technical-reporting': typeof ServicesTechnicalReportingRoute
   '/services/training-consultancy': typeof ServicesTrainingConsultancyRoute
   '/services/vessel-surveys': typeof ServicesVesselSurveysRoute
+  '/knowledge-hub/': typeof KnowledgeHubIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -221,19 +302,28 @@ export interface FileRoutesByTo {
   '/qms-plug': typeof QmsPlugRoute
   '/quality-policy': typeof QualityPolicyRoute
   '/resources': typeof ResourcesRoute
-  '/services': typeof ServicesRouteWithChildren
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/certifications/$framework': typeof CertificationsFrameworkRoute
   '/certifications/iso-15189': typeof CertificationsIso15189Route
   '/certifications/iso-17020': typeof CertificationsIso17020Route
   '/certifications/iso-17025': typeof CertificationsIso17025Route
+  '/knowledge-hub/$slug': typeof KnowledgeHubSlugRoute
+  '/services/accreditation-support': typeof ServicesAccreditationSupportRoute
+  '/services/auditing': typeof ServicesAuditingRoute
   '/services/cargo-inspection': typeof ServicesCargoInspectionRoute
+  '/services/certification-support': typeof ServicesCertificationSupportRoute
+  '/services/condition-surveys': typeof ServicesConditionSurveysRoute
   '/services/damage-loss': typeof ServicesDamageLossRoute
   '/services/marine-inspection': typeof ServicesMarineInspectionRoute
   '/services/quality-assurance': typeof ServicesQualityAssuranceRoute
+  '/services/quality-system-implementation': typeof ServicesQualitySystemImplementationRoute
+  '/services/sample-logistics': typeof ServicesSampleLogisticsRoute
   '/services/technical-reporting': typeof ServicesTechnicalReportingRoute
   '/services/training-consultancy': typeof ServicesTrainingConsultancyRoute
   '/services/vessel-surveys': typeof ServicesVesselSurveysRoute
+  '/knowledge-hub': typeof KnowledgeHubIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -246,6 +336,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/history': typeof HistoryRoute
   '/industries': typeof IndustriesRoute
+  '/knowledge-hub': typeof KnowledgeHubRouteWithChildren
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/qms-plug': typeof QmsPlugRoute
@@ -254,16 +345,26 @@ export interface FileRoutesById {
   '/services': typeof ServicesRouteWithChildren
   '/standards': typeof StandardsRoute
   '/terms': typeof TermsRoute
+  '/certifications/$framework': typeof CertificationsFrameworkRoute
   '/certifications/iso-15189': typeof CertificationsIso15189Route
   '/certifications/iso-17020': typeof CertificationsIso17020Route
   '/certifications/iso-17025': typeof CertificationsIso17025Route
+  '/knowledge-hub/$slug': typeof KnowledgeHubSlugRoute
+  '/services/accreditation-support': typeof ServicesAccreditationSupportRoute
+  '/services/auditing': typeof ServicesAuditingRoute
   '/services/cargo-inspection': typeof ServicesCargoInspectionRoute
+  '/services/certification-support': typeof ServicesCertificationSupportRoute
+  '/services/condition-surveys': typeof ServicesConditionSurveysRoute
   '/services/damage-loss': typeof ServicesDamageLossRoute
   '/services/marine-inspection': typeof ServicesMarineInspectionRoute
   '/services/quality-assurance': typeof ServicesQualityAssuranceRoute
+  '/services/quality-system-implementation': typeof ServicesQualitySystemImplementationRoute
+  '/services/sample-logistics': typeof ServicesSampleLogisticsRoute
   '/services/technical-reporting': typeof ServicesTechnicalReportingRoute
   '/services/training-consultancy': typeof ServicesTrainingConsultancyRoute
   '/services/vessel-surveys': typeof ServicesVesselSurveysRoute
+  '/knowledge-hub/': typeof KnowledgeHubIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -277,6 +378,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/history'
     | '/industries'
+    | '/knowledge-hub'
     | '/partners'
     | '/privacy'
     | '/qms-plug'
@@ -285,16 +387,26 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/certifications/$framework'
     | '/certifications/iso-15189'
     | '/certifications/iso-17020'
     | '/certifications/iso-17025'
+    | '/knowledge-hub/$slug'
+    | '/services/accreditation-support'
+    | '/services/auditing'
     | '/services/cargo-inspection'
+    | '/services/certification-support'
+    | '/services/condition-surveys'
     | '/services/damage-loss'
     | '/services/marine-inspection'
     | '/services/quality-assurance'
+    | '/services/quality-system-implementation'
+    | '/services/sample-logistics'
     | '/services/technical-reporting'
     | '/services/training-consultancy'
     | '/services/vessel-surveys'
+    | '/knowledge-hub/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -311,19 +423,28 @@ export interface FileRouteTypes {
     | '/qms-plug'
     | '/quality-policy'
     | '/resources'
-    | '/services'
     | '/standards'
     | '/terms'
+    | '/certifications/$framework'
     | '/certifications/iso-15189'
     | '/certifications/iso-17020'
     | '/certifications/iso-17025'
+    | '/knowledge-hub/$slug'
+    | '/services/accreditation-support'
+    | '/services/auditing'
     | '/services/cargo-inspection'
+    | '/services/certification-support'
+    | '/services/condition-surveys'
     | '/services/damage-loss'
     | '/services/marine-inspection'
     | '/services/quality-assurance'
+    | '/services/quality-system-implementation'
+    | '/services/sample-logistics'
     | '/services/technical-reporting'
     | '/services/training-consultancy'
     | '/services/vessel-surveys'
+    | '/knowledge-hub'
+    | '/services'
   id:
     | '__root__'
     | '/'
@@ -335,6 +456,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/history'
     | '/industries'
+    | '/knowledge-hub'
     | '/partners'
     | '/privacy'
     | '/qms-plug'
@@ -343,16 +465,26 @@ export interface FileRouteTypes {
     | '/services'
     | '/standards'
     | '/terms'
+    | '/certifications/$framework'
     | '/certifications/iso-15189'
     | '/certifications/iso-17020'
     | '/certifications/iso-17025'
+    | '/knowledge-hub/$slug'
+    | '/services/accreditation-support'
+    | '/services/auditing'
     | '/services/cargo-inspection'
+    | '/services/certification-support'
+    | '/services/condition-surveys'
     | '/services/damage-loss'
     | '/services/marine-inspection'
     | '/services/quality-assurance'
+    | '/services/quality-system-implementation'
+    | '/services/sample-logistics'
     | '/services/technical-reporting'
     | '/services/training-consultancy'
     | '/services/vessel-surveys'
+    | '/knowledge-hub/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -365,6 +497,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   HistoryRoute: typeof HistoryRoute
   IndustriesRoute: typeof IndustriesRoute
+  KnowledgeHubRoute: typeof KnowledgeHubRouteWithChildren
   PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
   QmsPlugRoute: typeof QmsPlugRoute
@@ -373,6 +506,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRouteWithChildren
   StandardsRoute: typeof StandardsRoute
   TermsRoute: typeof TermsRoute
+  CertificationsFrameworkRoute: typeof CertificationsFrameworkRoute
   CertificationsIso15189Route: typeof CertificationsIso15189Route
   CertificationsIso17020Route: typeof CertificationsIso17020Route
   CertificationsIso17025Route: typeof CertificationsIso17025Route
@@ -434,6 +568,13 @@ declare module '@tanstack/react-router' {
       path: '/partners'
       fullPath: '/partners'
       preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge-hub': {
+      id: '/knowledge-hub'
+      path: '/knowledge-hub'
+      fullPath: '/knowledge-hub'
+      preLoaderRoute: typeof KnowledgeHubRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/industries': {
@@ -499,6 +640,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/knowledge-hub/': {
+      id: '/knowledge-hub/'
+      path: '/'
+      fullPath: '/knowledge-hub/'
+      preLoaderRoute: typeof KnowledgeHubIndexRouteImport
+      parentRoute: typeof KnowledgeHubRoute
+    }
     '/services/vessel-surveys': {
       id: '/services/vessel-surveys'
       path: '/vessel-surveys'
@@ -518,6 +673,20 @@ declare module '@tanstack/react-router' {
       path: '/technical-reporting'
       fullPath: '/services/technical-reporting'
       preLoaderRoute: typeof ServicesTechnicalReportingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/sample-logistics': {
+      id: '/services/sample-logistics'
+      path: '/sample-logistics'
+      fullPath: '/services/sample-logistics'
+      preLoaderRoute: typeof ServicesSampleLogisticsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/quality-system-implementation': {
+      id: '/services/quality-system-implementation'
+      path: '/quality-system-implementation'
+      fullPath: '/services/quality-system-implementation'
+      preLoaderRoute: typeof ServicesQualitySystemImplementationRouteImport
       parentRoute: typeof ServicesRoute
     }
     '/services/quality-assurance': {
@@ -541,12 +710,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesDamageLossRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/condition-surveys': {
+      id: '/services/condition-surveys'
+      path: '/condition-surveys'
+      fullPath: '/services/condition-surveys'
+      preLoaderRoute: typeof ServicesConditionSurveysRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/certification-support': {
+      id: '/services/certification-support'
+      path: '/certification-support'
+      fullPath: '/services/certification-support'
+      preLoaderRoute: typeof ServicesCertificationSupportRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/cargo-inspection': {
       id: '/services/cargo-inspection'
       path: '/cargo-inspection'
       fullPath: '/services/cargo-inspection'
       preLoaderRoute: typeof ServicesCargoInspectionRouteImport
       parentRoute: typeof ServicesRoute
+    }
+    '/services/auditing': {
+      id: '/services/auditing'
+      path: '/auditing'
+      fullPath: '/services/auditing'
+      preLoaderRoute: typeof ServicesAuditingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/accreditation-support': {
+      id: '/services/accreditation-support'
+      path: '/accreditation-support'
+      fullPath: '/services/accreditation-support'
+      preLoaderRoute: typeof ServicesAccreditationSupportRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/knowledge-hub/$slug': {
+      id: '/knowledge-hub/$slug'
+      path: '/$slug'
+      fullPath: '/knowledge-hub/$slug'
+      preLoaderRoute: typeof KnowledgeHubSlugRouteImport
+      parentRoute: typeof KnowledgeHubRoute
     }
     '/certifications/iso-17025': {
       id: '/certifications/iso-17025'
@@ -569,27 +773,63 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CertificationsIso15189RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certifications/$framework': {
+      id: '/certifications/$framework'
+      path: '/certifications/$framework'
+      fullPath: '/certifications/$framework'
+      preLoaderRoute: typeof CertificationsFrameworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface KnowledgeHubRouteChildren {
+  KnowledgeHubSlugRoute: typeof KnowledgeHubSlugRoute
+  KnowledgeHubIndexRoute: typeof KnowledgeHubIndexRoute
+}
+
+const KnowledgeHubRouteChildren: KnowledgeHubRouteChildren = {
+  KnowledgeHubSlugRoute: KnowledgeHubSlugRoute,
+  KnowledgeHubIndexRoute: KnowledgeHubIndexRoute,
+}
+
+const KnowledgeHubRouteWithChildren = KnowledgeHubRoute._addFileChildren(
+  KnowledgeHubRouteChildren,
+)
+
 interface ServicesRouteChildren {
+  ServicesAccreditationSupportRoute: typeof ServicesAccreditationSupportRoute
+  ServicesAuditingRoute: typeof ServicesAuditingRoute
   ServicesCargoInspectionRoute: typeof ServicesCargoInspectionRoute
+  ServicesCertificationSupportRoute: typeof ServicesCertificationSupportRoute
+  ServicesConditionSurveysRoute: typeof ServicesConditionSurveysRoute
   ServicesDamageLossRoute: typeof ServicesDamageLossRoute
   ServicesMarineInspectionRoute: typeof ServicesMarineInspectionRoute
   ServicesQualityAssuranceRoute: typeof ServicesQualityAssuranceRoute
+  ServicesQualitySystemImplementationRoute: typeof ServicesQualitySystemImplementationRoute
+  ServicesSampleLogisticsRoute: typeof ServicesSampleLogisticsRoute
   ServicesTechnicalReportingRoute: typeof ServicesTechnicalReportingRoute
   ServicesTrainingConsultancyRoute: typeof ServicesTrainingConsultancyRoute
   ServicesVesselSurveysRoute: typeof ServicesVesselSurveysRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAccreditationSupportRoute: ServicesAccreditationSupportRoute,
+  ServicesAuditingRoute: ServicesAuditingRoute,
   ServicesCargoInspectionRoute: ServicesCargoInspectionRoute,
+  ServicesCertificationSupportRoute: ServicesCertificationSupportRoute,
+  ServicesConditionSurveysRoute: ServicesConditionSurveysRoute,
   ServicesDamageLossRoute: ServicesDamageLossRoute,
   ServicesMarineInspectionRoute: ServicesMarineInspectionRoute,
   ServicesQualityAssuranceRoute: ServicesQualityAssuranceRoute,
+  ServicesQualitySystemImplementationRoute:
+    ServicesQualitySystemImplementationRoute,
+  ServicesSampleLogisticsRoute: ServicesSampleLogisticsRoute,
   ServicesTechnicalReportingRoute: ServicesTechnicalReportingRoute,
   ServicesTrainingConsultancyRoute: ServicesTrainingConsultancyRoute,
   ServicesVesselSurveysRoute: ServicesVesselSurveysRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 
 const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
@@ -606,6 +846,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   HistoryRoute: HistoryRoute,
   IndustriesRoute: IndustriesRoute,
+  KnowledgeHubRoute: KnowledgeHubRouteWithChildren,
   PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
   QmsPlugRoute: QmsPlugRoute,
@@ -614,6 +855,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRouteWithChildren,
   StandardsRoute: StandardsRoute,
   TermsRoute: TermsRoute,
+  CertificationsFrameworkRoute: CertificationsFrameworkRoute,
   CertificationsIso15189Route: CertificationsIso15189Route,
   CertificationsIso17020Route: CertificationsIso17020Route,
   CertificationsIso17025Route: CertificationsIso17025Route,

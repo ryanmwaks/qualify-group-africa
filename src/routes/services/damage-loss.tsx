@@ -21,6 +21,7 @@ function DamageLossPage() {
         subtitle: "QUALIFY provides independent, evidence-based damage and loss assessments for cargo, vessels and marine equipment — supporting claims resolution, legal proceedings and insurance decision-making with accurate, structured technical findings.",
         Icon: ShieldAlert,
         accentCss: "var(--color-ocean)",
+        heroVariant: "tanga",
         whoItems: [
           "Marine and cargo insurers",
           "P&I clubs and protection associations",

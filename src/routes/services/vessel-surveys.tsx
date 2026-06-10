@@ -21,6 +21,7 @@ function VesselSurveysPage() {
         subtitle: "We conduct structured, independent assessments of vessel overall condition, equipment status, safety systems, maintenance standard and operational readiness — giving all parties a clear, factual picture before a transaction, charter or operational commitment.",
         Icon: ClipboardCheck,
         accentCss: "var(--color-ocean)",
+        heroVariant: "djibouti",
         whoItems: [
           "Prospective vessel buyers",
           "Charterers signing new charter parties",
